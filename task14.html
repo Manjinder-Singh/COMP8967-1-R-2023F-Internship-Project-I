@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Neutral</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #afbff1;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        th, td {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 5px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Simple Calculator</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <table>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Emission Reduction</td>
+                <td><input type="number" id="emissionReduction" value="0"></td>
+            </tr>
+            <tr>
+                <td>Job Creation</td>
+                <td><input type="number" id="jobCreation" value="0"></td>
+            </tr>
+        </table>
+        <p>Result: <span id="result">0</span></p>
+    </main>
+    <footer>
+        &copy; Task 14 - Dhrumil Limbad
+    </footer>
+
+    <script>
+        // Get the input elements
+        const emissionReductionInput = document.getElementById('emissionReduction');
+        const jobCreationInput = document.getElementById('jobCreation');
+        const resultSpan = document.getElementById('result');
+
+        // Add an event listener to the inputs to grab values and display as typed
+        emissionReductionInput.addEventListener('input', updateResult);
+        jobCreationInput.addEventListener('input', updateResult);
+
+        // Function to update the result
+        function updateResult() {
+            const emissionReduction = parseFloat(emissionReductionInput.value) || 0;
+            const jobCreation = parseFloat(jobCreationInput.value) || 0;
+            const result = "Carbon Reduction: "+emissionReduction + "|| Job Creation: " + jobCreation;
+            resultSpan.textContent = result.toFixed(2);
+        }
+    </script>
+</body>
+</html>
