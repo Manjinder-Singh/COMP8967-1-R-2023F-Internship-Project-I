@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
+body {
+  padding: 1rem;
+  font-family: "Motnserrat", sans-serif;
+  min-height: 100vh;
+}
+
+table {
+  border-collapse: collapse;
+  background-color: white;
+  overflow: hidden;
+  /* width: 500px; */
+  border-radius: 10px;
+}
+
+th,
+td {
+  text-align: left;
+  font-size: 12px;
+  padding: 10px;
+}
+
+th {
+  background-color: #7691ab;
+  color: white;
+}
