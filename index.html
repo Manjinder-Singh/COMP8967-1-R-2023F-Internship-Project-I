@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   </head>
   <body>
     <section class="home_header">
@@ -86,5 +87,10 @@
         </table>
       </div>
     </section>
+    <section>
+      <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+      <div id="emmision_chart"><!-- Plotly chart will be drawn inside this DIV --></div>
+    </section>
+    <script type="module" src="utils.js"></script>
   </body>
 </html>
