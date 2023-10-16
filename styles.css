@@ -24,3 +24,7 @@ th {
   background-color: #7691ab;
   color: white;
 }
+
+#emmision_chart{
+  width: 100%;
+}

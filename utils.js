@@ -1,3 +1,6 @@
+const button = document.querySelector("button");
+
+
 var data = [ {
     z: [[10, 10.625, 12.5, 15.625, 20],
          [5.625, 6.25, 8.125, 11.25, 15.625],
@@ -103,7 +106,7 @@ var data = [ {
         y: 1.05,
         xanchor: 'left',
         yanchor: 'bottom',
-        text: 'Main Source for News',
+        text: 'Emission Statistics',
         font:{
           family: 'Arial',
           size: 30,
@@ -126,7 +129,86 @@ var data = [ {
           color: 'rgb(150,150,150)'
         }
       }
-    ]
+    ],
+    updatemenus: [{
+
+        x: 0.5,
+  
+        y: 0,
+  
+        yanchor: "top",
+  
+        xanchor: "center",
+  
+        showactive: false,
+  
+        direction: "left",
+  
+        type: "buttons",
+  
+        pad: {"t": 87, "r": 10},
+  
+        buttons: [{
+  
+          method: "animate",
+  
+          args: [null, {
+  
+            fromcurrent: true,
+  
+            transition: {
+  
+              duration: 0,
+  
+            },
+  
+            frame: {
+  
+              duration: 40,
+  
+              redraw: false
+  
+            }
+  
+          }],
+  
+          label: "Play"
+  
+        }, {
+  
+          method: "animate",
+  
+          args: [
+  
+            [null],
+  
+            {
+  
+              mode: "immediate",
+  
+              transition: {
+  
+                duration: 0
+  
+              },
+  
+              frame: {
+  
+                duration: 0,
+  
+                redraw: false
+  
+              }
+  
+            }
+  
+          ],
+  
+          label: "Pause"
+  
+        }]
+  
+      }]
   };
   
   for ( var i = 0 ; i < xData.length ; i ++ ) {
@@ -163,4 +245,6 @@ var data = [ {
   }
   
   
-  Plotly.newPlot('emmision_chart', emission_data, emission_layout, {showSendToCloud: true});
+  button.addEventListener("click", (event) => {
+    Plotly.newPlot('emmision_chart', emission_data, emission_layout, {showSendToCloud: true});
+  });
