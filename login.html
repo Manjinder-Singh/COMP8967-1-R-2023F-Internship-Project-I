@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDDtV2A8BZD2RQ6NlWkcPJn7nUnupKtXg8",
+        authDomain: "climateneutral-e5e14.firebaseapp.com",
+        projectId: "climateneutral-e5e14",
+        storageBucket: "climateneutral-e5e14.appspot.com",
+        messagingSenderId: "823275659630",
+        appId: "1:823275659630:web:26433c0cac4d8423ea217f"
+      };
+    
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
@@ -15,18 +34,18 @@
         />
       </section>
       <section class="form-wrapper grid center">
-        <form action="" class="form-section">
+        <form id="login-form" action="" class="form-section">
           <div class="header">
             <h1>Welcome Back</h1>
             <p>Welcome back, Please enter your details</p>
           </div>
           <div class="field">
             <label for="">Email</label>
-            <input type="text" placeholder="Enter Your name" />
+            <input type="text" id="email" placeholder="Enter Your name" />
           </div>
           <div class="field">
             <label for="">Password</label>
-            <input type="password" placeholder="Enter Your password" />
+            <input type="password" id="password" placeholder="Enter Your password" />
           </div>
           <div class="pass-section flex">
             <div class="input-item">
@@ -42,5 +61,30 @@
         </form>
       </section>
     </div>
+
+    <script>
+      const loginForm = document.getElementById('login-form');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+    
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = emailInput.value;
+        const password = passwordInput.value;
+    
+        firebase.auth().signInWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            // User is signed in.
+            const user = userCredential.user;
+            console.log(`Logged in as ${user.email}`);
+            // You can redirect or perform other actions here.
+          })
+          .catch((error) => {
+            // Handle login errors
+            console.error(error.message);
+          });
+      });
+    </script>
+    
   </body>
 </html>
