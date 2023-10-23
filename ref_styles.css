@@ -1,0 +1,250 @@
+
+
+/* Define the styles for the body element. */
+body {
+    font-family: Arial, sans-serif; /* Set the font family */
+    background-color: #f0f0f0;     /* Set the background color */
+    color: #333;                  /* Set the text color */
+    margin: 0;                    /* Remove default margin */
+    padding: 0;                   /* Remove default padding */
+}
+
+/* Define styles for the header element. */
+header {
+    background-color: #333;       /* Set the background color */
+    color: #fff;                  /* Set the text color */
+    padding: 20px;                /* Add padding to the header */
+    text-align: center;           /* Center-align text */
+}
+
+/* Define styles for links. */
+a {
+    color: #0078d4;               /* Set link color */
+    text-decoration: none;        /* Remove underlines from links */
+}
+
+/* Define styles for a class named "button". */
+.button {
+    background-color: #0078d4;   /* Set background color */
+    color: #fff;                  /* Set text color */
+    padding: 10px 20px;           /* Add padding to the button */
+    border: none;                /* Remove border */
+    border-radius: 4px;          /* Add rounded corners */
+    cursor: pointer;             /* Add a pointer cursor on hover */
+}
+
+/* Define a hover effect for the button. */
+.button:hover {
+    background-color: #0056b3;   /* Change background color on hover */
+}
+
+Here is an example CSS file with proper commenting:
+
+/* ===========================================================
+   Global Styles
+   =========================================================== */
+
+/* Apply box-sizing border-box to all elements */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Link styles */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline; 
+}
+
+/* ===========================================================
+   Header Styles
+   =========================================================== */
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+/* Header logo */
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;  
+}
+
+/* Header navigation */
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.nav a:hover {
+  background-color: #444;
+}
+
+
+
+
+/* ===========================================================
+   Global Styles
+   =========================================================== */
+
+/* Box sizing */
+*, 
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font: 16px/1.5 Arial, sans-serif; 
+  color: #333;
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* ===========================================================
+   Header
+   =========================================================== */
+
+header {
+  background: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+/* Header logo */
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}  
+
+/* Header navigation */
+.nav {
+  display: flex;
+  justify-content: space-between; 
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.nav a:hover {
+  background: #444;
+}
+
+
+/* ===========================================================
+   Main
+   =========================================================== */
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Main heading */
+main h1 {
+  font-size: 2.5em;
+}
+
+/* Main paragraphs */
+main p {
+  line-height: 1.6;
+  margin-bottom: 1em; 
+}
+
+
+
+/* ===========================================================
+   Form Styles  
+   =========================================================== */
+
+/* Form base styles */
+form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+input, 
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+} 
+
+/* Form button */ 
+button[type="submit"] {
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Form validation */
+input:invalid {
+  border-color: #dc3545; 
+}
+
+input:valid {
+  border-color: #28a745;
+}
+
+
+/* ===========================================================
+   Footer Styles
+   =========================================================== */
+   
+footer {
+  background: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center; 
+}
+
+/* Footer copyright text */
+.copyright {
+  font-size: 0.9em;
+}
+
+/* Footer links */
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px; 
+}
+
