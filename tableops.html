@@ -1,158 +1,287 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Dynamic Table Mapping</title>
-</head>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<body>
-    <table id="table1">
+  <body>
+    <main>
+      <section class="home_header">
+        <div>
+          <h1>Multi-Objective Decision Making Application</h1>
+          <p>
+            Rational decision making process informed by metrics and balanced
+            with your unique priorities.
+          </p>
+        </div>
+      </section>
+      <table id="table1">
         <tr>
-            <th>&nbsp;</th>
-            <th>Name</th>
-            <th>Scoring type</th>
-            <th>Weight</th>
-            <th>Direction to optimize</th>
+          <th>&nbsp;</th>
+          <th>Name</th>
+          <th>Scoring type</th>
+          <th>Weight</th>
+          <th>Direction to optimize</th>
         </tr>
         <!-- Example row for Category 1 -->
         <tr>
-            <td><input type="text" value="Category 1"></td>
-            <td><input type="text" value="Emission Reduction"></td>
-            <td><input type="text" value="Number"></td>
-            <td><input type="text" value="0.3"></td>
-            <td><input type="text" value="down"></td>
-            <td><button onclick="deleteRow(this)">Delete</button></td>
+          <td><input type="text" value="Category 1" /></td>
+          <td><input type="text" value="Emission Reduction" /></td>
+          <td><input type="text" value="Number" /></td>
+          <td><input type="text" value="0.3" /></td>
+          <td><input type="text" value="down" /></td>
+          <td><button onclick="deleteRow(this)"><div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+            </svg>
+            
+          </div></button></td>
         </tr>
         <!-- Example row for Category 2 -->
         <tr>
-            <td><input type="text" value="Category 2"></td>
-            <td><input type="text" value="Local Air Quality Impact"></td>
-            <td><input type="text" value="Number"></td>
-            <td><input type="text" value="0.4"></td>
-            <td><input type="text" value="up"></td>
-            <td><button onclick="deleteRow(this)">Delete</button></td>
+          <td><input type="text" value="Category 2" /></td>
+          <td><input type="text" value="Local Air Quality Impact" /></td>
+          <td><input type="text" value="Number" /></td>
+          <td><input type="text" value="0.4" /></td>
+          <td><input type="text" value="up" /></td>
+          <td><button onclick="deleteRow(this)"><div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+            </svg>
+            
+          </div></button></td>
         </tr>
-    </table>
+      </table>
 
-    <button onclick="addRowToTable1()">Add Row to Table 1</button>
+      <button class="btn" onclick="addRowToTable1()">Add Row to Table 1</button>
+      <br />
+      <br />
 
-    <table id="table2">
+      <table id="table2">
         <tr>
-            <th>Scenario</th>
-            <th>Name</th>
+          <th>Scenario</th>
+          <th>Name</th>
         </tr>
+        
         <!-- Example row for Category 1 -->
         <tr>
-            <td><input type="text" value="Category 1"></td>
-            <td><input type="text" value="Construct Bike Pathway"></td>
-            <td><button onclick="deleteRow(this)">Delete</button></td>
+          <td><input type="text" value="Category 1" /></td>
+          <td><input type="text" value="Construct Bike Pathway" /></td>
+          <td><button onclick="deleteRow(this)"><div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+            </svg>
+            
+          </div></button></td>
         </tr>
         <!-- Example row for Category 2 -->
         <tr>
-            <td><input type="text" value="Category 2"></td>
-            <td><input type="text" value="Add Bike Lanes to Road"></td>
-            <td><button onclick="deleteRow(this)">Delete</button></td>
+          <td><input type="text" value="Category 2" /></td>
+          <td><input type="text" value="Add Bike Lanes to Road" /></td>
+          <td><button onclick="deleteRow(this)"><div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+            </svg>
+            
+          </div></button></td>
         </tr>
-    </table>
+      </table>
 
-    <button onclick="addRowToTable2()">Add Row to Table 2</button>
+      <button class="btn" onclick="addRowToTable2()">Add Row to Table 2</button>
 
-    <button onclick="generateTable3()">Generate Table 3</button>
-
-    <table id="table3">
+      <br />
+      <br />
+      <hr />
+      <button class="btn" onclick="generateTable3()">Generate Table 3</button>
+      <br /><br />
+      <button class="btn" onclick="submitTable3()">Submit Table 3</button>
+      <table id="table3">
         <!-- Table 3 will be generated here -->
-    </table>
+      </table>
 
+      <br /><br />
+      <h2>To demonstrate the dynamic generation and population...</h2>
+      <button class="btn" onclick="populateTable4()">Populate Table 4</button>
+      <table id="table4">
+        <!-- Table 4 will be generated here -->
+      </table>
+    </main>
     <script>
-        // Function to add a row to Table 1
-        // Function to add a row to Table 1
-        function addRowToTable1() {
+// Function to add a row to Table 1
+function addRowToTable1() {
             var table1 = document.getElementById("table1");
             var newRow = table1.insertRow(-1);
 
             // Add input fields for each cell
             for (var i = 0; i < table1.rows[0].cells.length; i++) {
                 var cell = newRow.insertCell(i);
-                var input = document.createElement("input");
-                input.type = "text";
-                input.value = "New Data";
+                var input;
+
+                if (i === 2) { // Scoring type column
+                    input = document.createElement("select");
+                    var option1 = document.createElement("option");
+                    option1.text = "Number";
+                    var option2 = document.createElement("option");
+                    option2.text = "Descriptive";
+                    input.add(option1);
+                    input.add(option2);
+                } else {
+                    input = document.createElement("input");
+                    input.type = "text";
+                    input.value = "New Data";
+                }
+
                 cell.appendChild(input);
             }
 
             // Add a delete button for the new row
             var deleteCell = newRow.insertCell(table1.rows[0].cells.length);
-            deleteCell.innerHTML = '<button onclick="deleteRow(this)">Delete</button>';
+            deleteCell.innerHTML = `<button onclick="deleteRow(this)"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+</svg>
+</div></button>`;
         }
 
 
-        // Function to add a row to Table 2
-        function addRowToTable2() {
-            var table2 = document.getElementById("table2");
-            var newRow = table2.insertRow(-1);
+      // Function to add a row to Table 2
+      function addRowToTable2() {
+        var table2 = document.getElementById("table2");
+        var newRow = table2.insertRow(-1);
 
-            // Add input fields for each cell
-            for (var i = 0; i < table2.rows[1].cells.length - 1; i++) {
-                var cell = newRow.insertCell(i);
-                var input = document.createElement("input");
-                input.type = "text";
-                input.value = "New Data";
-                cell.appendChild(input);
-            }
-
-            // Add a delete button for the new row
-            var deleteCell = newRow.insertCell(table2.rows[1].cells.length - 1);
-            deleteCell.innerHTML = '<button onclick="deleteRow(this)">Delete</button>';
+        // Add input fields for each cell
+        for (var i = 0; i < table2.rows[1].cells.length - 1; i++) {
+          var cell = newRow.insertCell(i);
+          var input = document.createElement("input");
+          input.type = "text";
+          input.value = "New Data";
+          cell.appendChild(input);
         }
 
-        // Function to delete a row
-        function deleteRow(button) {
-            var row = button.parentNode.parentNode; // Get the row that contains the button
-            row.parentNode.removeChild(row); // Remove the row
+        // Add a delete button for the new row
+        var deleteCell = newRow.insertCell(table2.rows[1].cells.length - 1);
+        deleteCell.innerHTML =
+          `<button onclick="deleteRow(this)"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+</svg>
+</div></button>`;
+      }
+
+      // Function to delete a row
+      function deleteRow(button) {
+        var row = button.parentNode.parentNode; // Get the row that contains the button
+        row.parentNode.removeChild(row); // Remove the row
+      }
+
+      // Function to generate Table 3 based on Tables 1 and 2
+      function generateTable3() {
+        var table1 = document.getElementById("table1");
+        var table2 = document.getElementById("table2");
+        var table3 = document.getElementById("table3");
+
+        table3.innerHTML = ""; // Clear Table 3
+
+        // Create Table 3 header row with Table 1's Name as column headers
+        var headerRow = table3.insertRow(0);
+        var emptyHeaderCell = document.createElement("th");
+        headerRow.appendChild(emptyHeaderCell);
+
+        var headers = {}; // Store unique headers from Table 1
+        var headersArray = [];
+
+        for (var i = 1; i < table1.rows.length; i++) {
+          var name = table1.rows[i].cells[1].querySelector("input").value;
+          if (!headers[name]) {
+            headers[name] = true;
+            headersArray.push(name);
+          }
         }
 
-        // Function to generate Table 3 based on Tables 1 and 2
-        function generateTable3() {
-            var table1 = document.getElementById("table1");
-            var table2 = document.getElementById("table2");
-            var table3 = document.getElementById("table3");
-
-            table3.innerHTML = ''; // Clear Table 3
-
-            // Create Table 3 header row with Table 1's Name as column headers
-            var headerRow = table3.insertRow(0);
-            var emptyHeaderCell = document.createElement("th");
-            headerRow.appendChild(emptyHeaderCell);
-
-            var headers = {}; // Store unique headers from Table 1
-            var headersArray = [];
-
-            for (var i = 1; i < table1.rows.length; i++) {
-                var name = table1.rows[i].cells[1].querySelector('input').value;
-                if (!headers[name]) {
-                    headers[name] = true;
-                    headersArray.push(name);
-                }
-            }
-
-            for (var i = 0; i < headersArray.length; i++) {
-                var cell = document.createElement("th");
-                cell.textContent = headersArray[i];
-                headerRow.appendChild(cell);
-            }
-
-            // Copy Table 2 data to Table 3
-            for (var i = 1; i < table2.rows.length; i++) {
-                var newRow = table3.insertRow(i);
-                var nameCell = newRow.insertCell(0);
-                nameCell.textContent = table2.rows[i].cells[1].querySelector('input').value; // Get Table 2's Name
-
-                for (var j = 0; j < headersArray.length; j++) {
-                    var cell = newRow.insertCell(j + 1);
-                    cell.innerHTML = '<input type="text" value="{input field}">';
-                }
-            }
+        for (var i = 0; i < headersArray.length; i++) {
+          var cell = document.createElement("th");
+          cell.textContent = headersArray[i];
+          headerRow.appendChild(cell);
         }
+
+        // Copy Table 2 data to Table 3
+        for (var i = 1; i < table2.rows.length; i++) {
+          var newRow = table3.insertRow(i);
+          var nameCell = newRow.insertCell(0);
+          nameCell.textContent =
+            table2.rows[i].cells[1].querySelector("input").value; // Get Table 2's Name
+
+          for (var j = 0; j < headersArray.length; j++) {
+            var cell = newRow.insertCell(j + 1);
+            cell.innerHTML = '<input type="text" value="{input field}">';
+          }
+        }
+      }
+
+      function submitTable3() {
+        var table3 = document.getElementById("table3");
+        var jsonData = [];
+
+        for (var i = 1; i < table3.rows.length; i++) {
+          var row = table3.rows[i];
+          var rowData = {};
+          rowData["Name"] = row.cells[0].textContent; // Get the "Name" from the first cell
+
+          for (var j = 1; j < row.cells.length; j++) {
+            var header = table3.rows[0].cells[j].textContent;
+            var value = row.cells[j].querySelector("input").value;
+            rowData[header] = value;
+          }
+
+          jsonData.push(rowData);
+        }
+
+        // Convert jsonData to JSON string
+        var jsonString = JSON.stringify(jsonData);
+
+        // Save the JSON data to local storage
+        localStorage.setItem("table3Data", jsonString);
+
+        console.log("JSON data saved to local storage.");
+      }
+      function populateTable4() {
+        var table4 = document.getElementById("table4");
+
+        // Retrieve the JSON data from local storage
+        var jsonString = localStorage.getItem("table3Data");
+
+        if (jsonString) {
+          var jsonData = JSON.parse(jsonString);
+
+          // Clear existing content in Table 4
+          table4.innerHTML = "";
+
+          // Create Table 4 header row based on the JSON data keys
+          var headerRow = table4.insertRow(0);
+          var emptyHeaderCell = document.createElement("th");
+          headerRow.appendChild(emptyHeaderCell);
+
+          for (var key in jsonData[0]) {
+            var cell = document.createElement("th");
+            cell.textContent = key;
+            headerRow.appendChild(cell);
+          }
+
+          // Populate Table 4 with JSON data
+          for (var i = 0; i < jsonData.length; i++) {
+            var newRow = table4.insertRow(i + 1);
+            var nameCell = newRow.insertCell(0);
+            nameCell.textContent = jsonData[i]["Name"];
+
+            for (var j = 1; j < headerRow.cells.length; j++) {
+              var cell = newRow.insertCell(j);
+              cell.innerHTML =
+                '<input type="text" value="' +
+                jsonData[i][headerRow.cells[j].textContent] +
+                '">';
+            }
+          }
+        }
+      }
     </script>
-</body>
-
+  </body>
 </html>
