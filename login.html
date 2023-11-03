@@ -78,13 +78,15 @@
             const user = userCredential.user;
             console.log(`Logged in as ${user.email}`);
             // You can redirect or perform other actions here.
+            window.location.href = 'tableops.html';
           })
           .catch((error) => {
             // Handle login errors
             console.error(error.message);
+            alert(error.message)
           });
       });
     </script>
-    <script src="login.js"></script>
+    <!-- <script src="login.js"></script> -->
   </body>
 </html>

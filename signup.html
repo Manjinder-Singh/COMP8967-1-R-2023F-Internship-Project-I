@@ -17,9 +17,6 @@
       </section>
       <section class="form-wrapper grid center">
         <form id="signup-form" action="" class="form-section">
-
-        <form id="signup-form" action="" class="form-section">
-
           <div class="header">
             <h1>We will help you to get started</h1>
             <p>Hello user, Please enter your details here</p>
@@ -89,12 +86,17 @@
                 const user = userCredential.user;
                 console.log("User signed up:", user);
                 // redirect the user to another page or perform other actions here.
+                window.location.href = 'login.html';
               })
               .catch((error) => {
                 // Handle errors, e.g., display an error message to the user
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.error("Signup error:", errorCode, errorMessage);
+                // Display the error message to the user (e.g., using an alert or a message div)
+                alert(errorMessage);
+                // const errorMessageDiv = document.getElementById('error-message'); // Replace 'error-message' with the ID of your error message element
+                // errorMessageDiv.textContent = errorMessage;
               });
           });
         </script>

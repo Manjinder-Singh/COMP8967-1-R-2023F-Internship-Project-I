@@ -96,6 +96,7 @@
       <button class="btn" onclick="generateTable3()">Generate Table 3</button>
       <br /><br />
       <button class="btn" onclick="submitTable3()">Submit Table 3</button>
+      <script src="dimensionlessscore.js"></script>
       <table id="table3">
         <!-- Table 3 will be generated here -->
       </table>
@@ -217,32 +218,32 @@ function addRowToTable1() {
         }
       }
 
-      function submitTable3() {
-        var table3 = document.getElementById("table3");
-        var jsonData = [];
+      // function submitTable3() {
+      //   var table3 = document.getElementById("table3");
+      //   var jsonData = [];
 
-        for (var i = 1; i < table3.rows.length; i++) {
-          var row = table3.rows[i];
-          var rowData = {};
-          rowData["Name"] = row.cells[0].textContent; // Get the "Name" from the first cell
+      //   for (var i = 1; i < table3.rows.length; i++) {
+      //     var row = table3.rows[i];
+      //     var rowData = {};
+      //     rowData["Name"] = row.cells[0].textContent; // Get the "Name" from the first cell
 
-          for (var j = 1; j < row.cells.length; j++) {
-            var header = table3.rows[0].cells[j].textContent;
-            var value = row.cells[j].querySelector("input").value;
-            rowData[header] = value;
-          }
+      //     for (var j = 1; j < row.cells.length; j++) {
+      //       var header = table3.rows[0].cells[j].textContent;
+      //       var value = row.cells[j].querySelector("input").value;
+      //       rowData[header] = value;
+      //     }
 
-          jsonData.push(rowData);
-        }
+      //     jsonData.push(rowData);
+      //   }
 
-        // Convert jsonData to JSON string
-        var jsonString = JSON.stringify(jsonData);
+      //   // Convert jsonData to JSON string
+      //   var jsonString = JSON.stringify(jsonData);
 
-        // Save the JSON data to local storage
-        localStorage.setItem("table3Data", jsonString);
+      //   // Save the JSON data to local storage
+      //   localStorage.setItem("table3Data", jsonString);
 
-        console.log("JSON data saved to local storage.");
-      }
+      //   console.log("JSON data saved to local storage.");
+      // }
       function populateTable4() {
         var table4 = document.getElementById("table4");
 
