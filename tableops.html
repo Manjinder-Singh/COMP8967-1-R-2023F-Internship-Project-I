@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dynamic Table Mapping</title>
+</head>
+
+<body>
+    <table id="table1">
+        <tr>
+            <th>&nbsp;</th>
+            <th>Name</th>
+            <th>Scoring type</th>
+            <th>Weight</th>
+            <th>Direction to optimize</th>
+        </tr>
+        <!-- Example row for Category 1 -->
+        <tr>
+            <td><input type="text" value="Category 1"></td>
+            <td><input type="text" value="Emission Reduction"></td>
+            <td><input type="text" value="Number"></td>
+            <td><input type="text" value="0.3"></td>
+            <td><input type="text" value="down"></td>
+            <td><button onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+        <!-- Example row for Category 2 -->
+        <tr>
+            <td><input type="text" value="Category 2"></td>
+            <td><input type="text" value="Local Air Quality Impact"></td>
+            <td><input type="text" value="Number"></td>
+            <td><input type="text" value="0.4"></td>
+            <td><input type="text" value="up"></td>
+            <td><button onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+    </table>
+
+    <button onclick="addRowToTable1()">Add Row to Table 1</button>
+
+    <table id="table2">
+        <tr>
+            <th>Scenario</th>
+            <th>Name</th>
+        </tr>
+        <!-- Example row for Category 1 -->
+        <tr>
+            <td><input type="text" value="Category 1"></td>
+            <td><input type="text" value="Construct Bike Pathway"></td>
+            <td><button onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+        <!-- Example row for Category 2 -->
+        <tr>
+            <td><input type="text" value="Category 2"></td>
+            <td><input type="text" value="Add Bike Lanes to Road"></td>
+            <td><button onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+    </table>
+
+    <button onclick="addRowToTable2()">Add Row to Table 2</button>
+
+    <button onclick="generateTable3()">Generate Table 3</button>
+
+    <table id="table3">
+        <!-- Table 3 will be generated here -->
+    </table>
+
+    <script>
+        // Function to add a row to Table 1
+        // Function to add a row to Table 1
+        function addRowToTable1() {
+            var table1 = document.getElementById("table1");
+            var newRow = table1.insertRow(-1);
+
+            // Add input fields for each cell
+            for (var i = 0; i < table1.rows[0].cells.length; i++) {
+                var cell = newRow.insertCell(i);
+                var input = document.createElement("input");
+                input.type = "text";
+                input.value = "New Data";
+                cell.appendChild(input);
+            }
+
+            // Add a delete button for the new row
+            var deleteCell = newRow.insertCell(table1.rows[0].cells.length);
+            deleteCell.innerHTML = '<button onclick="deleteRow(this)">Delete</button>';
+        }
+
+
+        // Function to add a row to Table 2
+        function addRowToTable2() {
+            var table2 = document.getElementById("table2");
+            var newRow = table2.insertRow(-1);
+
+            // Add input fields for each cell
+            for (var i = 0; i < table2.rows[1].cells.length - 1; i++) {
+                var cell = newRow.insertCell(i);
+                var input = document.createElement("input");
+                input.type = "text";
+                input.value = "New Data";
+                cell.appendChild(input);
+            }
+
+            // Add a delete button for the new row
+            var deleteCell = newRow.insertCell(table2.rows[1].cells.length - 1);
+            deleteCell.innerHTML = '<button onclick="deleteRow(this)">Delete</button>';
+        }
+
+        // Function to delete a row
+        function deleteRow(button) {
+            var row = button.parentNode.parentNode; // Get the row that contains the button
+            row.parentNode.removeChild(row); // Remove the row
+        }
+
+        // Function to generate Table 3 based on Tables 1 and 2
+        function generateTable3() {
+            var table1 = document.getElementById("table1");
+            var table2 = document.getElementById("table2");
+            var table3 = document.getElementById("table3");
+
+            table3.innerHTML = ''; // Clear Table 3
+
+            // Create Table 3 header row with Table 1's Name as column headers
+            var headerRow = table3.insertRow(0);
+            var emptyHeaderCell = document.createElement("th");
+            headerRow.appendChild(emptyHeaderCell);
+
+            var headers = {}; // Store unique headers from Table 1
+            var headersArray = [];
+
+            for (var i = 1; i < table1.rows.length; i++) {
+                var name = table1.rows[i].cells[1].querySelector('input').value;
+                if (!headers[name]) {
+                    headers[name] = true;
+                    headersArray.push(name);
+                }
+            }
+
+            for (var i = 0; i < headersArray.length; i++) {
+                var cell = document.createElement("th");
+                cell.textContent = headersArray[i];
+                headerRow.appendChild(cell);
+            }
+
+            // Copy Table 2 data to Table 3
+            for (var i = 1; i < table2.rows.length; i++) {
+                var newRow = table3.insertRow(i);
+                var nameCell = newRow.insertCell(0);
+                nameCell.textContent = table2.rows[i].cells[1].querySelector('input').value; // Get Table 2's Name
+
+                for (var j = 0; j < headersArray.length; j++) {
+                    var cell = newRow.insertCell(j + 1);
+                    cell.innerHTML = '<input type="text" value="{input field}">';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

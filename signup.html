@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body class="flex center">
+    <div class="page-grid grid">
+      <section class="banner grid center">
+        <img
+          src="https://blogger.googleusercontent.com/img/a/AVvXsEghdXVxxAlp1t_cKedjD8EZ9toGFYAPe_c40Sdogsj12fzOjV65u4rsHBVo7jnViKGu7pFKEncx3FcIh9GAJqz0IXOwuX1HW5hA_9uy58L4bOj-uZUWTysmgi9WMf1FTdD_EmL2xeVFsJhSf3gr8c5tiGX8frQdZtUv1ny-LEui0HDr0RmCCmY0bUaA"
+          alt=""
+        />
+      </section>
+      <section class="form-wrapper grid center">
+        <form id="signup-form" action="" class="form-section">
+          <div class="header">
+            <h1>We will help you to get started</h1>
+            <p>Hello user, Please enter your details here</p>
+          </div>
+          <div class="field">
+            <label for="">Email</label>
+            <input type="text" id="email" placeholder="Enter Your Email" />
+          </div>
+          <div class="field">
+            <label for="">Password</label>
+            <input type="password" id="password" placeholder="Enter Your password" />
+          </div>
+          <div class="field">
+            <label for="">Confirm Password</label>
+            <input type="password" placeholder="Enter Your password" />
+          </div>
+          <!-- <div class="pass-section flex">
+            <div class="input-item">
+              <input type="checkbox" name="" id="" />
+              <span>Remember password</span>
+            </div>
+            <a href="#0">Forgot password?</a>
+          </div>-->
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+          <div class="footer">
+            <p>Already have an account? <a href="login.html">Login In</a></p>
+          </div>
+        </form>
+      </section>
+    </div>
+
+        <!-- Firebase configuration script -->
+        <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+        <script>
+          // Firebase configuration
+          const firebaseConfig = {
+        apiKey: "AIzaSyDDtV2A8BZD2RQ6NlWkcPJn7nUnupKtXg8",
+        authDomain: "climateneutral-e5e14.firebaseapp.com",
+        projectId: "climateneutral-e5e14",
+        storageBucket: "climateneutral-e5e14.appspot.com",
+        messagingSenderId: "823275659630",
+        appId: "1:823275659630:web:26433c0cac4d8423ea217f"
+      };
+    
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+    
+          // Get references to the form elements
+          const signUpForm = document.getElementById("signup-form");
+          const emailInput = document.getElementById("email");
+          const passwordInput = document.getElementById("password");
+    
+          // Add an event listener to the form for submission
+          signUpForm.addEventListener("submit", (e) => {
+            e.preventDefault(); // Prevent the default form submission
+    
+            const email = emailInput.value;
+            const password = passwordInput.value;
+    
+            // Sign up the user with Firebase Authentication
+            firebase
+              .auth()
+              .createUserWithEmailAndPassword(email, password)
+              .then((userCredential) => {
+                // User signed up successfully
+                const user = userCredential.user;
+                console.log("User signed up:", user);
+                // redirect the user to another page or perform other actions here.
+              })
+              .catch((error) => {
+                // Handle errors, e.g., display an error message to the user
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error("Signup error:", errorCode, errorMessage);
+              });
+          });
+        </script>
+
+  </body>
+</html>
