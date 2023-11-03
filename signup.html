@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signup Page</title>
     <link rel="stylesheet" href="login.css" />
+    <script src="main.js"></script>
   </head>
-  <body class="flex center">
+  <body class="flex center"> 
     <div class="page-grid grid">
       <section class="banner grid center">
         <img
@@ -16,6 +17,9 @@
       </section>
       <section class="form-wrapper grid center">
         <form id="signup-form" action="" class="form-section">
+
+        <form id="signup-form" action="" class="form-section">
+
           <div class="header">
             <h1>We will help you to get started</h1>
             <p>Hello user, Please enter your details here</p>
@@ -39,14 +43,13 @@
             </div>
             <a href="#0">Forgot password?</a>
           </div>-->
-          <button type="submit" class="btn btn-primary">Sign Up</button>
+          <button type="submit" class="btn btn-primary" onclick="addData()">Sign Up</button>
           <div class="footer">
             <p>Already have an account? <a href="login.html">Login In</a></p>
           </div>
         </form>
       </section>
     </div>
-
         <!-- Firebase configuration script -->
         <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
@@ -95,6 +98,7 @@
               });
           });
         </script>
+      <script src="signup.js"></script>
 
   </body>
 </html>
