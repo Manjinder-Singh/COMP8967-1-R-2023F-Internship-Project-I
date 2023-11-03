@@ -1,2 +1,3 @@
 # COMP8967-1-R-2023F-Internship-Project-I
-Repository created for project developement and easy management
+
+The "Multi-Objective Decision-Making (MODM)" of the "Climate Neutral" web application, is designed to assist users in making complex multi-objective decisions, particularly in the context of climate change and environmental sustainability. It helps individuals and organizations evaluate and select the most optimal scenario from various alternatives, taking into account multiple critical factors. Decision-making in these areas often involves intricate choices, with multiple factors and scenarios to consider. The MODM method streamlines this process, offering a systematic approach to analyze and recommend the best scenario based on different categories and their associated factors.
