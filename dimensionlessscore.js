@@ -49,6 +49,30 @@ function processJsonData(jsonString) {
   return JSON.stringify(result);
 }
 
+function toNumeric(){
+  var dropDown = document.getElementById()
+  var descriptiveValue = dropDown.value;
+  var numericVal;
+
+  if (descriptiveValue == "low"){
+    numericVal = 1;
+  }
+  else if(descriptiveValue == "low medium"){
+    numericVal = 2;
+  }else if(descriptiveValue == "medium"){
+    numericVal = 3;
+  }else if(descriptiveValue == "medium high"){
+    numericVal = 4;
+  }else if(descriptiveValue == "high"){
+    numericVal = 5
+  }
+  else{
+    console.log("Invalid String value");
+  }
+  return numericVal;
+
+}
+
 // const minValue = 10;
 // const maxValue = 100;
 // const weightFactor = 0.5;
