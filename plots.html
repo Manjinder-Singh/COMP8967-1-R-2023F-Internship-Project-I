@@ -1,18 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Recommended plots for Multi-Objective Decision Making Application</title>
+    <link rel="stylesheet" href="https://cdn.plot.ly/plotly-latest.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+            background-color: #f8f8f8;
+            padding: 20px;
+            text-align: center;
+        }
+        p {
+            margin: 20px;
+            font-size: 18px;
+        }
+        #charts-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .chart {
+            width: 30%;
+            margin: 10px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Multi-Objective Decision-Making (MODM)</title>
 </head>
 <body>
-    <h1>Recommended plots for Multi-Objective Decision Making Application</h1>
-    <div id="myDiv"></div>
-    <div id="myDiv5"></div>
-    <div id="myDiv6"></div>
-    <div id="myDiv7"></div>
-    <div id="myDiv8"></div>
-    <div id="myDiv9"></div>
-    <div id="myDiv10"></div>
-    <script src="utilsgraph.js"></script>
+    <h1>Multi-Objective Decision-Making (MODM)</h1>
+    <p>
+        Welcome to MODM (Multi-Objective Decision-Making)! We provide insights into various data categories
+        through interactive graphs and charts. Explore our data visualizations to gain valuable
+        information on different aspects of data.
+    </p>
+    
+    <div id="charts-container">
+        <div id="myDiv1" class="chart"></div>
+        <div id="myDiv2" class="chart"></div>
+        <div id="myDiv3" class="chart"></div>
+    </div>
+
+    <script src="plots.js"></script>
 </body>
 </html>
