@@ -118,6 +118,9 @@
         <!-- Table 3 will be generated here -->
       </table>
 
+      <div id="resultContainer">
+        
+    </div>
       <br /><br />
       <h2>To demonstrate the dynamic generation and population...</h2>
       <button class="btn" onclick="populateTable4()">Populate Table 4</button>
@@ -230,7 +233,21 @@ function addRowToTable1() {
 
           for (var j = 0; j < headersArray.length; j++) {
             var cell = newRow.insertCell(j + 1);
-            var input = j==0?i*100:j+i*200;
+            var input;
+            if(j==0){
+               input = j==0?i*100:j+i*200;
+            }
+            else{
+              if(i==1){
+                input = "low";
+              }
+              else if (i==2){
+                input = "low medium";
+              }
+              else{
+                input = "medium";
+              }
+            }
             cell.innerHTML = '<input type="text" value="'+input+'">';
           }
         }

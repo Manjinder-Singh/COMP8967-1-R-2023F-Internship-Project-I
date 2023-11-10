@@ -12,7 +12,16 @@ function submitTable3() {
 
     for (var j = 1; j < row.cells.length; j++) {
       var header = table3.rows[0].cells[j].textContent;
-      var value = parseFloat(row.cells[j].querySelector("input").value);
+      var value;
+      var inputValue = row.cells[j].querySelector("input").value;
+      console.log("input value: "+inputValue);
+      if(inputValue == "low" || inputValue == "low medium" || inputValue=="medium"){
+        value = toNumeric(inputValue);
+        console.log("input value converted : "+value);
+      }
+      else {
+        value = parseInt(inputValue);
+      }
       rowData[header] = value;
 
       // Update column minimum and maximum values
@@ -57,7 +66,7 @@ function submitTable3() {
     var linearScoreKey = rowName + " Linear Score";
     console.log(rowName + " Linear Score");
     var linearScoreValue = jsonData[k][linearScoreKey];
-    localStorage.setItem(rowName, linearScoreValue);
+    //localStorage.setItem(rowName, linearScoreValue);
   }
 
   // Call the function to calculate and store dimensionless scores
@@ -78,11 +87,13 @@ function extractAndStoreData() {
     var row = table1.rows[i];
     var name = row.cells[1].querySelector("input").value;
     var weight = parseFloat(row.cells[3].querySelector("input").value);
+    var direction = row.cells[4].querySelector("input").value;
 
     // Create an object with the extracted data
     var item = {
       Name: name+" Linear Score",
-      Weight: weight
+      Weight: weight,
+      direction: direction
     };
 
     data.push(item);
@@ -116,7 +127,18 @@ function calculateAndStoreDimensionlessScores() {
         // Find the weight for the current key from table1Data
         var weightItem = table1Data.find(item => item.Name === key);
         if (weightItem) {
-          dimensionlessScore[key] = weightItem.Weight * table3Item[key];
+          var direction = weightItem.direction;
+          if(direction == "up"){
+            dimensionlessScore[key] = weightItem.Weight * table3Item[key];
+            console.log("direction: "+direction);
+            console.log(weightItem.Weight * table3Item[key]);
+          }
+          else if(direction == "down"){
+            dimensionlessScore[key] = -(weightItem.Weight * table3Item[key]);
+            console.log("direction: "+direction);
+            console.log(weightItem.Weight * table3Item[key]);
+            console.log(-(weightItem.Weight * table3Item[key]));
+          }
         }
       }
     }
@@ -160,6 +182,27 @@ function calculateAndStoreTotalDimensionlessScores() {
 
     // Store the JSON object with total dimensionless scores per scenario in local storage
     localStorage.setItem("totalDimensionlessScorePerScenario", jsonTotalDimensionlessScorePerScenario);
+
+     // Get the HTML element where you want to display the JSON value
+     var resultContainer = document.getElementById("resultContainer");
+
+     // Check if the HTML element exists before updating its content
+     if (resultContainer) {
+      // Parse the JSON string to get the object
+      var scoreObject = JSON.parse(jsonTotalDimensionlessScorePerScenario);
+
+      // Iterate through the object and display each key-value pair
+      for (var key in scoreObject) {
+          var formattedValue = scoreObject[key].toFixed(3); // Trim to third precision
+          resultContainer.innerHTML += `<p>${key}: ${formattedValue}</p>`;
+      }
+
+      // Find and display the maximum value (bolded)
+      var maxValue = Math.max(...Object.values(totalDimensionlessScorePerScenario));
+      var maxKey = Object.keys(totalDimensionlessScorePerScenario).find(key => totalDimensionlessScorePerScenario[key] === maxValue);
+      resultContainer.innerHTML += `<p><strong>Recommended Scenario: ${maxKey} (value: ${maxValue.toFixed(3)})</strong> </p>`;
+  }
+     
   }
 }
 
@@ -232,21 +275,21 @@ function processJsonData(jsonString) {
   return JSON.stringify(result);
 }
 
-function toNumeric(){
-  var dropDown = document.getElementById()
-  var descriptiveValue = dropDown.value;
+function toNumeric(inputValue){
+  // var dropDown = document.getElementById()
+  // var descriptiveValue = dropDown.value;
   var numericVal;
 
-  if (descriptiveValue == "low"){
+  if (inputValue == "low"){
     numericVal = 1;
   }
-  else if(descriptiveValue == "low medium"){
+  else if(inputValue == "low medium"){
     numericVal = 2;
-  }else if(descriptiveValue == "medium"){
+  }else if(inputValue == "medium"){
     numericVal = 3;
-  }else if(descriptiveValue == "medium high"){
+  }else if(inputValue == "medium high"){
     numericVal = 4;
-  }else if(descriptiveValue == "high"){
+  }else if(inputValue == "high"){
     numericVal = 5
   }
   else{
