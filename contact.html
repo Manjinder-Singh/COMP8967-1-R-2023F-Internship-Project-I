@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Climate Neutral</title>
+    <link rel="stylesheet" type="text/css" href="styles1.css">
+</head>
+<body>
+    <div class="container1">
+        <h1>Contact Us</h1>
+        <div class="contact-form">
+            <form id="feedbackForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="inquiries">
+            <p>If you want to send feedback or have any comments, please email us at <span class="highlighted">feedback@climateneutral.com</span>.</p>
+            <button id="sendEmailButton">Send Email</button>
+        </div>
+    </div>
+
+    <button id="printButton">Print</button>
+    <button id="saveToFileButton">Save to .txt</button>
+
+    <script src="contact.js"></script>
+</body>
+</html>
