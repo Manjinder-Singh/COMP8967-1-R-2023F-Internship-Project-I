@@ -149,13 +149,23 @@
 
       <br />
       <br />
-      <hr />
+      <!-- <hr />
       <button class="btn" onclick="generateTable3()">Generate Table 3</button>
       <br /><br />
       <button class="btn" onclick="submitTable3()">Submit Table 3</button>
       <table id="table3">
+      </table> -->
+
+      <hr />
+    <button class="btn" onclick="openTable3Generator()">Generate Table 3</button>
+    <div id="table3Modal" class="modal">
+      <span class="close-btn" onclick="closeTable3Generator()">&times;</span>
+      <table id="table3">
         <!-- Table 3 will be generated here -->
       </table>
+      <br />
+      <button class="btn" onclick="submitTable3()">Submit Table 3</button>
+    </div>
 
       <br /><br />
       <h2>To demonstrate the dynamic generation and population...</h2>
@@ -168,6 +178,14 @@
       <button onclick="populateTableData()">Populate Data</button>
     </main>
     <script>
+      function openTable3Generator() {
+      document.getElementById('table3Modal').style.display = 'block';
+      generateTable3();
+    }
+
+    function closeTable3Generator() {
+      document.getElementById('table3Modal').style.display = 'none';
+    }
       // Function to add a row to Table 1
       function addRowToTable1() {
         var table1 = document.getElementById("table1");
