@@ -6,52 +6,81 @@
   </head>
 
   <body>
+    <section class="home_header">
+      <div>
+        <h1>Multi-Objective Decision Making Application</h1>
+        <p>
+          Rational decision making process informed by metrics and balanced with
+          your unique priorities.
+        </p>
+      </div>
+    </section>
+
     <main>
-      <section class="home_header">
-        <div>
-          <h1>Multi-Objective Decision Making Application</h1>
-          <p>
-            Rational decision making process informed by metrics and balanced
-            with your unique priorities.
-          </p>
-        </div>
-      </section>
       <table id="table1">
         <tr>
-          <th>&nbsp;</th>
+          <th>Case</th>
           <th>Name</th>
           <th>Scoring type</th>
           <th>Weight</th>
           <th>Direction to optimize</th>
         </tr>
         <!-- Example row for Category 1 -->
-        <tr>
+        <!-- <tr>
           <td><input type="text" value="Category 1" /></td>
           <td><input type="text" value="Emission Reduction" /></td>
           <td><input type="text" value="Number" /></td>
           <td><input type="text" value="0.3" /></td>
           <td><input type="text" value="down" /></td>
-          <td><button onclick="deleteRow(this)"><div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-            </svg>
-            
-          </div></button></td>
-        </tr>
+          <td>
+            <button onclick="deleteRow(this)">
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+        </tr> -->
         <!-- Example row for Category 2 -->
-        <tr>
+        <!-- <tr>
           <td><input type="text" value="Category 2" /></td>
           <td><input type="text" value="Local Air Quality Impact" /></td>
           <td><input type="text" value="Number" /></td>
           <td><input type="text" value="0.4" /></td>
           <td><input type="text" value="up" /></td>
-          <td><button onclick="deleteRow(this)"><div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-            </svg>
-            
-          </div></button></td>
-        </tr>
+          <td>
+            <button onclick="deleteRow(this)">
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+        </tr> -->
       </table>
 
       <button class="btn" onclick="addRowToTable1()">Add Row to Table 1</button>
@@ -63,28 +92,56 @@
           <th>Scenario</th>
           <th>Name</th>
         </tr>
-        
+
         <!-- Example row for Category 1 -->
         <tr>
           <td><input type="text" value="Category 1" /></td>
           <td><input type="text" value="Construct Bike Pathway" /></td>
-          <td><button onclick="deleteRow(this)"><div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-            </svg>
-            
-          </div></button></td>
+          <td>
+            <button onclick="deleteRow(this)">
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
         </tr>
         <!-- Example row for Category 2 -->
         <tr>
           <td><input type="text" value="Category 2" /></td>
           <td><input type="text" value="Add Bike Lanes to Road" /></td>
-          <td><button onclick="deleteRow(this)"><div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-            </svg>
-            
-          </div></button></td>
+          <td>
+            <button onclick="deleteRow(this)">
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
         </tr>
       </table>
 
@@ -106,43 +163,49 @@
       <table id="table4">
         <!-- Table 4 will be generated here -->
       </table>
+
+      <br /><br />
+      <button onclick="populateTableData()">Populate Data</button>
     </main>
     <script>
-// Function to add a row to Table 1
-function addRowToTable1() {
-            var table1 = document.getElementById("table1");
-            var newRow = table1.insertRow(-1);
+      // Function to add a row to Table 1
+      function addRowToTable1() {
+        var table1 = document.getElementById("table1");
+        // table1.rows[1].cells[3].querySelector('input').value
+        var newRow = table1.insertRow(-1);
 
-            // Add input fields for each cell
-            for (var i = 0; i < table1.rows[0].cells.length; i++) {
-                var cell = newRow.insertCell(i);
-                var input;
+        // Add input fields for each cell
+        for (var i = 0; i < table1.rows[0].cells.length; i++) {
+          var cell = newRow.insertCell(i);
+          var input;
 
-                if (i === 2) { // Scoring type column
-                    input = document.createElement("select");
-                    var option1 = document.createElement("option");
-                    option1.text = "Number";
-                    var option2 = document.createElement("option");
-                    option2.text = "Descriptive";
-                    input.add(option1);
-                    input.add(option2);
-                } else {
-                    input = document.createElement("input");
-                    input.type = "text";
-                    input.value = "New Data";
-                }
+          if (i === 2) {
+            // Scoring type column
+            input = document.createElement("select");
+            var option1 = document.createElement("option");
+            option1.text = "Number";
+            var option2 = document.createElement("option");
+            option2.text = "Descriptive";
+            input.add(option1);
+            input.add(option2);
+          } else {
+            input = document.createElement("input");
+            input.type = "text";
+            input.value = "New Data";
+          }
 
-                cell.appendChild(input);
-            }
+          cell.appendChild(input);
+        }
 
-            // Add a delete button for the new row
-            var deleteCell = newRow.insertCell(table1.rows[0].cells.length);
-            deleteCell.innerHTML = `<button onclick="deleteRow(this)"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        // Add a delete button for the new row
+        var deleteCell = newRow.insertCell(table1.rows[0].cells.length);
+        deleteCell.innerHTML = `<button onclick="deleteRow(this)"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
 </svg>
 </div></button>`;
-        }
 
+        saveTable1Data();
+      }
 
       // Function to add a row to Table 2
       function addRowToTable2() {
@@ -160,8 +223,7 @@ function addRowToTable1() {
 
         // Add a delete button for the new row
         var deleteCell = newRow.insertCell(table2.rows[1].cells.length - 1);
-        deleteCell.innerHTML =
-          `<button onclick="deleteRow(this)"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        deleteCell.innerHTML = `<button onclick="deleteRow(this)"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
 </svg>
 </div></button>`;
@@ -171,6 +233,7 @@ function addRowToTable1() {
       function deleteRow(button) {
         var row = button.parentNode.parentNode; // Get the row that contains the button
         row.parentNode.removeChild(row); // Remove the row
+        saveTable1Data();
       }
 
       // Function to generate Table 3 based on Tables 1 and 2
@@ -243,6 +306,7 @@ function addRowToTable1() {
 
         console.log("JSON data saved to local storage.");
       }
+
       function populateTable4() {
         var table4 = document.getElementById("table4");
 
@@ -282,6 +346,119 @@ function addRowToTable1() {
           }
         }
       }
+
+      // Function to check if the sum of weights in Table 1 is not more than 1
+      function validateTable1Weights() {
+        var table1 = document.getElementById("table1");
+        var weightSum = 0;
+
+        for (var i = 1; i < table1.rows.length; i++) {
+          var weightInput = table1.rows[i].cells[3].querySelector("input");
+          var weightValue = parseFloat(weightInput.value);
+
+          if (!isNaN(weightValue)) {
+            weightSum += weightValue;
+          }
+        }
+
+        if (weightSum > 1) {
+          alert(
+            "The sum of weights in Table 1 cannot exceed 1. Please adjust the values."
+          );
+        }
+        saveTable1Data();
+      }
+
+      // Add an event listener to the "Add Row to Table 1" button
+      document
+        .querySelector("button[onclick='addRowToTable1()']")
+        .addEventListener("click", validateTable1Weights);
+
+      // Add an event listener to input fields in Table 1
+      var table1 = document.getElementById("table1");
+      for (var i = 1; i < table1.rows.length; i++) {
+        var weightInput = table1.rows[i].cells[3].querySelector("input");
+        weightInput.addEventListener("change", validateTable1Weights);
+      }
+
+      // Function to create a delete button with an SVG
+      function createDeleteButton() {
+        var deleteButton = document.createElement("button");
+        deleteButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"></path>
+                </svg>`;
+        deleteButton.onclick = function () {
+          deleteRow(this);
+        };
+        return deleteButton;
+      }
+
+      // Function to save Table 1 data to local storage
+      function saveTable1Data() {
+        var table1 = document.getElementById("table1");
+        var jsonData = [];
+
+        for (var i = 1; i < table1.rows.length; i++) {
+          var row = table1.rows[i];
+          var rowData = {
+            Case: row.cells[0].querySelector("input").value,
+            Name: row.cells[1].querySelector("input").value,
+            "Scoring type": row.cells[2].querySelector("select").value,
+            Weight: row.cells[3].querySelector("input").value,
+            "Direction to optimize": row.cells[4].querySelector("input").value,
+          };
+
+          jsonData.push(rowData);
+        }
+
+        // Convert jsonData to JSON string
+        var jsonString = JSON.stringify(jsonData);
+
+        // Save the JSON data to local storage
+        localStorage.setItem("table1Data", jsonString);
+
+        // You can display or further process the JSON data as needed
+        console.log("Table 1 data saved to local storage.");
+      }
+
+      // Function to populate Table 1 from local storage
+      function populateTable1Data() {
+        var table1 = document.getElementById("table1");
+        var table1Data = localStorage.getItem("table1Data");
+
+        if (table1Data) {
+          var data = JSON.parse(table1Data);
+
+          // Remove existing rows
+          while (table1.rows.length > 1) {
+            table1.deleteRow(1);
+          }
+
+          // Add rows with data from local storage
+          for (var i = 0; i < data.length; i++) {
+            var newRow = table1.insertRow(-1);
+            newRow.insertCell(0).innerHTML =
+              '<input type="text" value="' + data[i].Case + '">';
+            newRow.insertCell(1).innerHTML =
+              '<input type="text" value="' + data[i].Name + '">';
+            newRow.insertCell(2).innerHTML =
+              '<select><option value="Number">Number</option><option value="Descriptive">Descriptive</option></select>';
+            newRow.insertCell(3).innerHTML =
+              '<input type="number" value="' + data[i].Weight + '">';
+            newRow.insertCell(4).innerHTML =
+              '<input type="text" value="' +
+              data[i]["Direction to optimize"] +
+              '">';
+            newRow.insertCell(5).appendChild(createDeleteButton());
+          }
+
+          console.log("Table 1 data loaded from local storage.");
+        }
+      }
+
+      // Call populateTable1Data when the page loads to populate Table 1
+      window.onload = populateTable1Data;
     </script>
   </body>
 </html>
