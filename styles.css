@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
 body {
-  padding: 1rem;
+/*   padding: 1rem; */
   font-family: "Motnserrat", sans-serif;
   min-height: 100vh;
 }
@@ -10,21 +10,105 @@ table {
   background-color: white;
   overflow: hidden;
   /* width: 500px; */
-  border-radius: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 0px 4px rgba(2, 2, 2, 0.2);
 }
 
 th,
 td {
   text-align: left;
-  font-size: 12px;
+/*   font-size: 12px; */
+  font-size: 1.0rem;
   padding: 10px;
 }
 
 th {
-  background-color: #7691ab;
+/*   background-color: #7691ab; */
+  background-color: #362F4B;
   color: white;
 }
 
 #emmision_chart{
   width: 100%;
+}
+
+.home_header{
+  text-align: center;
+  padding: 45px 0;
+}
+
+.home_header h1{
+  font-size: 2.5rem;
+  line-height: 1.0;
+  margin-bottom: 10px;
+}
+
+.home_header p{
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.75;
+  margin-bottom: 25px;
+}
+
+.quote-image-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quote-image-div .quote-div p{
+  font-size: 1.125rem;
+  font-weight: 500;
+  font-style: italic;
+  margin: 0;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.initial{
+  padding: 1rem;
+}
+
+.initial h3{
+  font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.75;
+    margin-bottom: 15px
+}
+.quote-image-div .quote-div{
+  padding: 40px;
+  width: 450px;
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border-radius: 30px;
+  box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.1);
+  float: right;
+  margin: -50px;
+}
+
+.content-table thead tr{
+  background-color: #009879;
+  color: #fff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+
+}
+
+.content-table tbody tr{
+  border-bottom:  1px solid #dddd;
+}
+
+.content-table tbody tr:nth-of-type(even){
+  background-color: #f3f3f3;
+  /* background-color: #ECF7E8; */
+}
+
+.content-table tbody tr:last-of-type{
+  border-bottom: 2px solid #7691ab;
 }
