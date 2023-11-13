@@ -5,9 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="header.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   </head>
+  <style>
+    body{
+      /* background-color: #D4DDDC; */
+      background-color: #f0f8ff !important;
+    } 
+  </style>
   <body>
+    <header id="main-header">
+      <div class="main-header-logo">
+        <img src="img/BoldLogo.png" alt="">
+      </div>
+      <div class="navbar-links">
+        <nav>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="carrers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="navbar-links">
+        <ul>
+          <li><span>Welcome User</span></li>
+          <li><a href="login.html">Logout</a></li>
+        </ul>
+      </div>
+    </header>
     <section class="home_header">
       <div>
         <h1>Multi-Objective Decision Making Application</h1>
@@ -16,6 +43,14 @@
           your unique priorities.
         </p>
       </div>
+      <div class="quote-image-div">
+          <div class="quote-div">
+            <p>"Our choices today determine the climate of tomorrow. Choose wisely, act responsibly, and embrace the journey towards climate neutrality."</p>
+          </div>
+          <div class="img-div">
+            <img src="img/climate-img-1.gif" alt="">
+          </div>
+      </div>
     </section>
     <section class="initial">
       <h3>
@@ -23,7 +58,7 @@
         to to consider.
       </h3>
       <div class="step_1_setup">
-        <table>
+        <table class="content-table" style="width: 75%;">
           <tr>
             <th>&nbsp;</th>
             <th>Name</th>
@@ -63,7 +98,7 @@
       </div>
       <br>
       <div class="step_1_scenario">
-        <table>
+        <table class="content-table">
           <tr>
             <th>Scenario</th>
             <th>Name</th>
@@ -91,6 +126,11 @@
       <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
       <div id="emmision_chart"><!-- Plotly chart will be drawn inside this DIV --></div>
     </section>
+    <div class="footer-section flex center">
+      <footer>
+          <span>&copy; Climate Neutral Limited</span>
+      </footer>
+    </div>
     <script type="module" src="utils.js"></script>
   </body>
 </html>
