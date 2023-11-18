@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plotly.js Example</title>
+    <!-- Plotly.js CDN -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <!-- The div element where the plots will be displayed -->
+    <div id="plots"></div>
+
+    <script>
+        // Your JSON data
+        var jsonData = [
+            {
+                "Name": "Construct Bike Pathway",
+                "Scores": {
+                    "Truck Fire Control": 10,
+                    "Underground Piping": -6,
+                    "Yielding Froward": -14
+                }
+            },
+            {
+                "Name": "Add Bike Lanes to Road",
+                "Scores": {
+                    "Truck Fire Control": 20,
+                    "Underground Piping": -12,
+                    "Yielding Froward": -28
+                }
+            },
+            {
+                "Name": "Karan Ki Shaadi",
+                "Scores": {
+                    "Truck Fire Control": 30,
+                    "Underground Piping": -18,
+                    "Yielding Froward": -42
+                }
+            }
+        ];
+
+        // Function to create plots using Plotly.js
+        function createPlots(data) {
+            // Extracting names and scores from the JSON data
+            var names = data.map(item => item.Name);
+            var scores = data.map(item => Object.entries(item.Scores));
+
+            // Create a grouped bar chart for each project
+            var traces = scores.map(function (projectScores, index) {
+                return {
+                    x: projectScores.map(score => score[0]),
+                    y: projectScores.map(score => score[1]),
+                    type: 'bar',
+                    name: names[index]
+                };
+            });
+
+            // Layout configuration
+            var layout = {
+                barmode: 'group',
+                title: 'Scores for Each Project',
+                xaxis: { title: 'Score Category' },
+                yaxis: { title: 'Score' }
+            };
+
+            // Create the plot
+            Plotly.newPlot('plots', traces, layout);
+        }
+
+        // Call the function with your JSON data
+        createPlots(jsonData);
+    </script>
+</body>
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dynamic Table Mapping</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="dimensionlessscore.js"></script>
+</head>
+
+<body>
+    <section class="home_header">
+        <div>
+            <h1>Multi-Objective Decision Making Application</h1>
+            <p>
+                Rational decision making process informed by metrics and balanced with
+                your unique priorities.
+            </p>
+        </div>
+    </section>
+
+    <main>
+        <table id="table1">
+            <tr>
+                <th>Case</th>
+                <th>Name</th>
+                <th>Scoring type</th>
+                <th>Weight</th>
+                <th>Direction to optimize</th>
+            </tr>
+        </table>
+
+        <button class="btn" onclick="addRowToTable1()">Add Row to Table 1</button>
+        <br />
+        <br />
+
+        <table id="table2">
+            <tr>
+                <th>Scenario</th>
+                <th>Name</th>
+            </tr>
+
+            <!-- Example row for Category 1 -->
+            <tr>
+                <td><input type="text" value="Category 1" /></td>
+                <td><input type="text" value="Construct Bike Pathway" /></td>
+                <td>
+                    <button onclick="deleteRow(this)">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                            </svg>
+                        </div>
+                    </button>
+                </td>
+            </tr>
+            <!-- Example row for Category 2 -->
+            <tr>
+                <td><input type="text" value="Category 2" /></td>
+                <td><input type="text" value="Add Bike Lanes to Road" /></td>
+                <td>
+                    <button onclick="deleteRow(this)">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                            </svg>
+                        </div>
+                    </button>
+                </td>
+            </tr>
+        </table>
+
+        <button class="btn" onclick="addRowToTable2()">Add Row to Table 2</button>
+
+        <br />
+        <br />
+        <hr />
+        <button class="btn" onclick="openTable3Generator()">Generate Table 3</button>
+        <div id="table3Modal" class="modal">
+            <span class="close-btn" onclick="closeTable3Generator()">&times;</span>
+            <table id="table3">
+                <!-- Table 3 will be generated here -->
+            </table>
+            <br />
+            <button class="btn" onclick="submitTable3()">Submit Table 3</button>
+            <button class="btn" onclick="calculateTable3()">Calculate Score</button>
+        </div>
+        <div id="resultContainer"></div>
+
+        <br /><br />
+    </main>
+    <script>
+        function openTable3Generator() {
+            document.getElementById('table3Modal').style.display = 'block';
+            generateTable3();
+        }
+
+        function closeTable3Generator() {
+            document.getElementById('table3Modal').style.display = 'none';
+        }
+        // Function to add a row to Table 1
+        function addRowToTable1() {
+            var table1 = document.getElementById("table1");
+            // table1.rows[1].cells[3].querySelector('input').value
+            var newRow = table1.insertRow(-1);
+
+            // Add input fields for each cell
+            for (var i = 0; i < table1.rows[0].cells.length; i++) {
+                var cell = newRow.insertCell(i);
+                var input;
+
+                if (i === 2) {
+                    // Scoring type column
+                    input = document.createElement("select");
+                    var option1 = document.createElement("option");
+                    option1.text = "Number";
+                    var option2 = document.createElement("option");
+                    option2.text = "Descriptive";
+                    input.add(option1);
+                    input.add(option2);
+                } else {
+                    input = document.createElement("input");
+                    input.type = "text";
+                    input.value = "New Data";
+
+                    // Add an event listener for key input to saveTable1Data
+                    input.addEventListener("input", saveTable1Data);
+                }
+
+                cell.appendChild(input);
+            }
+
+            // Add a delete button for the new row
+            var deleteCell = newRow.insertCell(table1.rows[0].cells.length);
+            deleteCell.innerHTML = `<button onclick="deleteRow(this)"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+</svg>
+</div></button>`;
+
+            saveTable1Data();
+        }
+
+        // Function to add a row to Table 2
+        function addRowToTable2() {
+            var table2 = document.getElementById("table2");
+            var newRow = table2.insertRow(-1);
+
+            // Add input fields for each cell
+            for (var i = 0; i < table2.rows[1].cells.length - 1; i++) {
+                var cell = newRow.insertCell(i);
+                var input = document.createElement("input");
+                input.type = "text";
+                input.value = "New Data";
+                input.addEventListener("change", saveTable2DataOnChange); // Add onchange event
+                cell.appendChild(input);
+            }
+
+            // Add a delete button for the new row
+            var deleteCell = newRow.insertCell(table2.rows[1].cells.length - 1);
+            deleteCell.innerHTML = `<button onclick="deleteRowTable2(this)"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+</svg>
+</div></button>`;
+
+            saveTable2Data();
+        }
+
+        // Function to delete a row in Table 2
+        function deleteRowTable2(button) {
+            var row = button.parentNode.parentNode; // Get the row that contains the button
+            row.parentNode.removeChild(row); // Remove the row
+            saveTable2Data();
+        }
+
+        // Function to save Table 2 data to local storage
+        function saveTable2Data() {
+            var table2 = document.getElementById("table2");
+            var jsonData = [];
+
+            for (var i = 1; i < table2.rows.length; i++) {
+                var row = table2.rows[i];
+                var rowData = {
+                    Scenario: row.cells[0].querySelector("input").value,
+                    Name: row.cells[1].querySelector("input").value,
+                };
+
+                jsonData.push(rowData);
+            }
+
+            // Convert jsonData to JSON string
+            var jsonString = JSON.stringify(jsonData);
+
+            // Save the JSON data to local storage
+            localStorage.setItem("table2Data", jsonString);
+
+            // Display or further process the JSON data as needed
+            console.log("Table 2 data saved to local storage.");
+
+
+        }
+
+        // Function to save Table 2 data to local storage on change
+        function saveTable2DataOnChange() {
+            saveTable2Data();
+        }
+
+        // Function to populate Table 2 from local storage
+        function populateTable2Data() {
+            var table2 = document.getElementById("table2");
+            var table2Data = localStorage.getItem("table2Data");
+
+            if (table2Data) {
+                var data = JSON.parse(table2Data);
+
+                // Remove existing rows
+                while (table2.rows.length > 1) {
+                    table2.deleteRow(1);
+                }
+
+                // Add rows with data from local storage
+                for (var i = 0; i < data.length; i++) {
+                    var newRow = table2.insertRow(-1);
+                    newRow.insertCell(0).innerHTML =
+                        '<input type="text" value="' + data[i].Scenario + '">';
+                    newRow.insertCell(1).innerHTML =
+                        '<input type="text" value="' + data[i].Name + '">';
+                    newRow.insertCell(2).innerHTML =
+                        '<button onclick="deleteRowTable2(this)"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg></div></button>';
+                }
+
+                console.log("Table 2 data loaded from local storage.");
+            }
+        }
+
+        // Call populateTable2Data when the page is fully loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            populateTable2Data();
+        });
+
+        // Call populateTable2Data when the page loads to populate Table 2
+        // window.onload = populateTable2Data;
+
+        // Function to delete a row
+        function deleteRow(button) {
+            var row = button.parentNode.parentNode; // Get the row that contains the button
+            row.parentNode.removeChild(row); // Remove the row
+            saveTable1Data();
+        }
+
+        // Function to generate Table 3 based on Tables 1 and 2
+        function generateTable3() {
+            var table1 = document.getElementById("table1");
+            var table2 = document.getElementById("table2");
+            var table3 = document.getElementById("table3");
+
+            table3.innerHTML = ""; // Clear Table 3
+
+            // Create Table 3 header row with Table 1's Name as column headers
+            var headerRow = table3.insertRow(0);
+            var emptyHeaderCell = document.createElement("th");
+            headerRow.appendChild(emptyHeaderCell);
+
+            var headers = {}; // Store unique headers from Table 1
+            var headersArray = [];
+
+            for (var i = 1; i < table1.rows.length; i++) {
+                var name = table1.rows[i].cells[1].querySelector("input").value;
+                if (!headers[name]) {
+                    headers[name] = true;
+                    headersArray.push(name);
+                }
+            }
+
+            for (var i = 0; i < headersArray.length; i++) {
+                var cell = document.createElement("th");
+                cell.textContent = headersArray[i];
+                headerRow.appendChild(cell);
+            }
+
+            // Copy Table 2 data to Table 3
+            for (var i = 1; i < table2.rows.length; i++) {
+                var newRow = table3.insertRow(i);
+                var nameCell = newRow.insertCell(0);
+                nameCell.textContent =
+                    table2.rows[i].cells[1].querySelector("input").value; // Get Table 2's Name
+
+                for (var j = 0; j < headersArray.length; j++) {
+                    var cell = newRow.insertCell(j + 1);
+                    cell.innerHTML = '<input type="text" value="{input field}">';
+                }
+            }
+        }
+
+        function submitTable3() {
+            var table3 = document.getElementById("table3");
+            var jsonData = [];
+
+            for (var i = 1; i < table3.rows.length; i++) {
+                var row = table3.rows[i];
+                var rowData = {};
+                rowData["Name"] = row.cells[0].textContent; // Get the "Name" from the first cell
+
+                for (var j = 1; j < row.cells.length; j++) {
+                    var header = table3.rows[0].cells[j].textContent;
+                    var value = row.cells[j].querySelector("input").value;
+                    rowData[header] = value;
+                }
+
+                jsonData.push(rowData);
+            }
+
+            // Convert jsonData to JSON string
+            var jsonString = JSON.stringify(jsonData);
+
+            // Save the JSON data to local storage
+            localStorage.setItem("table3Data", jsonString);
+
+            console.log("JSON data saved to local storage.");
+        }
+
+        // Function to check if the sum of weights in Table 1 is not more than 1
+        function validateTable1Weights() {
+            var table1 = document.getElementById("table1");
+            var weightSum = 0;
+
+            for (var i = 1; i < table1.rows.length; i++) {
+                var weightInput = table1.rows[i].cells[3].querySelector("input");
+                var weightValue = parseFloat(weightInput.value);
+
+                if (!isNaN(weightValue)) {
+                    weightSum += weightValue;
+                }
+            }
+
+            if (weightSum > 1) {
+                alert(
+                    "The sum of weights in Table 1 cannot exceed 1. Please adjust the values."
+                );
+            }
+            saveTable1Data();
+        }
+
+        // Add an event listener to the "Add Row to Table 1" button
+        document
+            .querySelector("button[onclick='addRowToTable1()']")
+            .addEventListener("click", validateTable1Weights);
+
+        // Add an event listener to input fields in Table 1
+        var table1 = document.getElementById("table1");
+        for (var i = 1; i < table1.rows.length; i++) {
+            var weightInput = table1.rows[i].cells[3].querySelector("input");
+            weightInput.addEventListener("change", validateTable1Weights);
+        }
+
+        // Add an event listener to input fields in Table 1 for key input
+        var table1 = document.getElementById("table1");
+        for (var i = 1; i < table1.rows.length; i++) {
+            var weightInput = table1.rows[i].cells[3].querySelector("input");
+            weightInput.addEventListener("input", saveTable1Data);
+        }
+
+        // Function to create a delete button with an SVG
+        function createDeleteButton() {
+            var deleteButton = document.createElement("button");
+            deleteButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"></path>
+                </svg>`;
+            deleteButton.onclick = function () {
+                deleteRow(this);
+            };
+            return deleteButton;
+        }
+
+        // Function to save Table 1 data to local storage
+        function saveTable1Data() {
+            var table1 = document.getElementById("table1");
+            var jsonData = [];
+
+            for (var i = 1; i < table1.rows.length; i++) {
+                var row = table1.rows[i];
+                var rowData = {
+                    Case: row.cells[0].querySelector("input").value,
+                    Name: row.cells[1].querySelector("input").value,
+                    "Scoring type": row.cells[2].querySelector("select").value,
+                    Weight: row.cells[3].querySelector("input").value,
+                    "Direction to optimize": row.cells[4].querySelector("input").value,
+                };
+
+                jsonData.push(rowData);
+            }
+
+            // Convert jsonData to JSON string
+            var jsonString = JSON.stringify(jsonData);
+
+            // Save the JSON data to local storage
+            localStorage.setItem("table1Data", jsonString);
+
+            // You can display or further process the JSON data as needed
+            console.log("Table 1 data saved to local storage.");
+        }
+
+        // Function to populate Table 1 from local storage
+        function populateTable1Data() {
+            var table1 = document.getElementById("table1");
+            var table1Data = localStorage.getItem("table1Data");
+
+            if (table1Data) {
+                var data = JSON.parse(table1Data);
+
+                // Remove existing rows
+                while (table1.rows.length > 1) {
+                    table1.deleteRow(1);
+                }
+
+                // Add rows with data from local storage
+                for (var i = 0; i < data.length; i++) {
+                    var newRow = table1.insertRow(-1);
+                    newRow.insertCell(0).innerHTML =
+                        '<input type="text" value="' + data[i].Case + '">';
+                    newRow.insertCell(1).innerHTML =
+                        '<input type="text" value="' + data[i].Name + '">';
+                    newRow.insertCell(2).innerHTML =
+                        '<select><option value="Number">Number</option><option value="Descriptive">Descriptive</option></select>';
+                    newRow.insertCell(3).innerHTML =
+                        '<input type="number" value="' + data[i].Weight + '">';
+                    newRow.insertCell(4).innerHTML =
+                        '<input type="text" value="' +
+                        data[i]["Direction to optimize"] +
+                        '">';
+                    newRow.insertCell(5).appendChild(createDeleteButton());
+                }
+
+                console.log("Table 1 data loaded from local storage.");
+            }
+        }
+
+        // Call populateTable1Data when the page loads to populate Table 1
+        // window.onload = populateTable1Data;
+
+        
+  // Function to save Table 3 data to local storage
+  function saveTable3Data() {
+    var table3 = document.getElementById("table3");
+    var jsonData = [];
+
+    for (var i = 1; i < table3.rows.length; i++) {
+      var row = table3.rows[i];
+      var rowData = { Scenario: row.cells[0].textContent, Name: row.cells[1].textContent };
+
+      for (var j = 1; j < row.cells.length; j++) {
+        var header = table3.rows[0].cells[j].textContent;
+        var value = row.cells[j].querySelector("input").value;
+        rowData[header] = value;
+      }
+
+      jsonData.push(rowData);
+    }
+
+    // Convert jsonData to JSON string
+    var jsonString = JSON.stringify(jsonData);
+
+    // Save the JSON data to local storage
+    localStorage.setItem("table3Data", jsonString);
+
+    console.log("Table 3 data saved to local storage.");
+  }
+
+  // Function to populate Table 3 from local storage
+  function populateTable3Data() {
+    var table3 = document.getElementById("table3");
+    var table3Data = localStorage.getItem("table3Data");
+
+    if (table3Data) {
+      var data = JSON.parse(table3Data);
+
+      // Remove existing rows
+      while (table3.rows.length > 0) {
+        table3.deleteRow(0);
+      }
+
+      // Create Table 3 header row with Table 2's Name as column headers
+      var headerRow = table3.insertRow(0);
+      var emptyHeaderCell = document.createElement("th");
+      headerRow.appendChild(emptyHeaderCell);
+
+      var headers = {}; // Store unique headers from Table 3
+      var headersArray = [];
+
+      for (var i = 0; i < data.length; i++) {
+        for (var header in data[i]) {
+          if (header !== "Scenario" && !headers[header]) {
+            headers[header] = true;
+            headersArray.push(header);
+          }
+        }
+      }
+
+      for (var i = 0; i < headersArray.length; i++) {
+        var cell = document.createElement("th");
+        cell.textContent = headersArray[i];
+        headerRow.appendChild(cell);
+      }
+
+      // Add rows with data from local storage
+      for (var i = 0; i < data.length; i++) {
+        var newRow = table3.insertRow(i + 1);
+        var nameCell = newRow.insertCell(0);
+        nameCell.textContent = data[i].Name;
+
+        for (var j = 0; j < headersArray.length; j++) {
+          var cell = newRow.insertCell(j + 1);
+          cell.innerHTML = '<input type="text" value="' + data[i][headersArray[j]] + '">';
+        }
+      }
+
+      console.log("Table 3 data loaded from local storage.");
+    }
+  }
+
+  // Call populateTable3Data when the page is fully loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    populateTable1Data();
+    populateTable2Data();
+    populateTable3Data();
+  });
+
+    </script>
+</body>
+</html>
