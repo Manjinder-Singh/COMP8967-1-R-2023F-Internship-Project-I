@@ -29,7 +29,7 @@
         </div>
         <div class="field">
           <label for="">Email</label>
-          <input type="text" id="email" placeholder="Enter Your name" />
+          <input type="text" id="email" placeholder="Enter Your email" />
         </div>
         <div class="field">
           <label for="">Password</label>
@@ -40,13 +40,24 @@
             <input type="checkbox" name="" id="" />
             <span>Remember password</span>
           </div>
-          <a href="#0">Forgot password?</a>
+          <a href="#" id="forgotPasswordLink">Forgot password?</a>
         </div>
+
+
         <button type="submit" class="btn btn-primary">Sign in</button>
         <div class="footer">
           <p>Dont have an account? <a href="signup.html">Sign up</a></p>
         </div>
       </form>
+      <div id="forgotPasswordForm" style="display: none;">
+        <label for="forgotEmail">Enter your Email to reset password:</label>
+        <div class="field">
+          <input type="text" id="forgotEmailInput" placeholder="Enter Your email" />
+        </div>
+        <button type="button" class="btn btn-primary" onclick="resetPassword()">Reset Password</button>
+        <p id="resetPasswordMessage"></p>
+        <button type="button" class="btn btn-primary" onclick="goBackToLogin()">Back to Login</button>
+      </div>
     </section>
   </div>
 
@@ -54,6 +65,36 @@
     const loginForm = document.getElementById('login-form');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
+    const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+    const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+    const forgotEmailInput = document.getElementById('forgotEmailInput');
+    const resetPasswordMessage = document.getElementById('resetPasswordMessage');
+
+    // Toggle the display of the "Forgot Password" form
+    forgotPasswordLink.addEventListener('click', () => {
+      loginForm.style.display = 'none';
+      forgotPasswordForm.style.display = 'block';
+    });
+
+    // Function to reset password
+    function resetPassword() {
+      const email = forgotEmailInput.value;
+      console.log("email "+email);
+      firebase.auth().sendPasswordResetEmail(email)
+        .then(() => {
+          resetPasswordMessage.textContent = 'Password reset email sent.<br> Check your inbox.';
+        })
+        .catch((error) => {
+          console.error(error.message);
+          resetPasswordMessage.textContent = 'Error: ' + error.message;
+        });
+    }
+
+    // Function to go back to the login form
+    function goBackToLogin() {
+      loginForm.style.display = 'block';
+      forgotPasswordForm.style.display = 'none';
+    }
 
     firebase.auth().onAuthStateChanged(function (user) {
       var userLoggedInFlag = sessionStorage.getItem("userLoggedIn");

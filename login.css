@@ -56,6 +56,20 @@ a:hover {
 .header {
   margin-bottom: 2rem;
 }
+
+#forgotPasswordForm label[for="forgotEmail"] {
+  display: block;
+  margin-bottom: 16px; 
+  color: #333; 
+  font-size: 14px; 
+}
+
+#resetPasswordMessage {
+  margin-top: 8px; 
+  color: #f61818; 
+  font-size: 14px; 
+}
+
 .header p {
   font-weight: 500;
   opacity: 0.9;
