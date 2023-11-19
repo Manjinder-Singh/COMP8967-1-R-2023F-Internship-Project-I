@@ -1,0 +1,239 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f8ff; /* Light blue background color */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+}
+
+.container {
+    background-color: #FFFFFF; /* White container */
+    padding: 20px;
+    border-radius: 10px;
+    width: 70%;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.main-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 45px 0;
+}
+
+h1 {
+    color: #0074E4; /* Blue header color */
+}
+
+h2 {
+    color: #0074E4; /* Blue header color */
+}
+
+p, ul, ol {
+    color: #333; /* Dark text color */
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+ul, ol {
+    margin-left: 20px;
+}
+
+li {
+    margin: 5px 0;
+}
+
+
+#jobPostings {
+    margin-top: 20px;
+}
+
+.job-posting {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.job-title {
+    font-weight: bold;
+}
+
+.job-description {
+    margin-top: 10px;
+}
+
+
+
+/* Add a container for buttons and style for proper alignment */
+.buttons {
+    text-align: right;
+    margin-top: 10px;
+}
+
+
+/* Style for buttons */
+button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: #0074d9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#copyButton {
+    background-color: #33cc33; /* A green color for the "Copy" button */
+}
+
+/* Additional styles can be added as needed */
+/* Your previous styles can be reused here */
+
+.container1 {
+    text-align: center;
+}
+
+/* Contact Form */
+.contact-form-div{
+    position: relative;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    max-width: 550px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.contact-form-header{
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    padding: 20px 30px !important;
+    padding: 5px 5px 0 0;
+    text-align: left;
+}
+
+.contact-form-body{ 
+    margin: 0 auto;
+    text-align: left;
+    padding: 20px 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-body button{
+    font-family: inherit;
+    font-size: inherit;
+    padding: 10px 20px;
+    background-color: #6944c5;
+    line-height: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form-body .inquiries p{
+    color: #333;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* .form{
+    padding: 30px 40px;
+} */
+
+.form-control{
+    position: relative;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+} 
+
+.form-control label{
+    font-family: inherit;
+    font-size: inherit;
+    /* font-weight: 600; */
+    display: inline-block;
+    margin-bottom: 5px;
+    color: #1e1f24;
+}
+
+.form-control input, .form-control textarea{
+    border: 2px solid #f0f0f0;
+    border-radius: 0.5rem;
+    display: block;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    line-height: 25px;
+}
+
+.form-control i{
+    position: absolute;
+    top: 35px;
+    right: 10px;
+    visibility: hidden;
+}
+
+.form-control small{
+    visibility: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.form-control.success input{
+    border-color: #2ecc71;
+}
+
+.form-control.error input{
+    border-color: #e74c3c;
+}
+
+.form-control.success i.fa-check-circle{
+    color: #2ecc71;
+    visibility: visible;
+}
+
+.form-control.error i.fa-exclamation-circle{
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.form-control.error small{
+    color: #e74c3c;
+    visibility: visible;
+}
+
+/* .contact-form {
+    width: 60%;
+    margin: 0 auto;
+    text-align: left; 
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+} */
+
+/* Additional styles can be added as needed */
