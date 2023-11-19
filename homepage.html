@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en"> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="header.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+  <style>
+    body{
+      /* background-color: #D4DDDC; */
+      background-color: #f0f8ff;
+    } 
+
+
+
+  </style>
+  <body>
+    <header id="main-header">
+        <div class="main-header-logo">
+          <a href="homepage.html"><img src="img/BoldLogo.png" alt=""></a>
+        </div>
+        <div class="navbar-links">
+          <nav>
+            <ul class="homepage-navbar-lists" id="homepage-navbar-lists">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="carrers.html">Careers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <script>
+                  let data = localStorage.getItem('userEmail');
+                  let li = document.createElement('li');
+                  let listItem = document.getElementById('homepage-navbar-lists'); 
+                  if(data !== null){
+                    li.innerHTML = '<a href="index.html">Go To Dashboard</a>'
+                    listItem.appendChild(li);
+                  }else if (data == null){
+                    li.innerHTML = '<a href="login.html">Login</a>'
+                    listItem.appendChild(li);
+                  }
+
+                </script>
+                <!-- <li><a href="login.html">Login</a></li> -->
+            </ul>
+          </nav>
+        </div>
+    </header>
+    <section class="homepage-content home_header">
+        <div class="home_content">
+            <div class="home_page_title">
+                <h1>Multi-Objective Decision Making Application</h1>
+                <p>
+                  Rational decision making process informed by metrics and balanced with
+                  your unique priorities.
+                </p>
+            </div>
+            <div class="homepage-body">
+                <div class="body-item feature_img_div">
+                    <!-- <img src="img/climate-neutral-photo.jpg" alt=""> -->
+                    <div class="slider">
+                      <div class="slides">
+              
+                          <!-- slide input start -->
+                          <input type="radio" name="radio-btn" id="radio1">
+                          <input type="radio" name="radio-btn" id="radio2">
+                          <input type="radio" name="radio-btn" id="radio3">
+                          <!-- slide input end -->
+              
+                          <!-- slide image start-->
+                          <div class="slide first">
+                              <img src="img/slider1.jpg" alt="">
+                          </div>
+                          <div class="slide">
+                              <img src="img/slider2.jpg" alt="">
+                          </div>
+                          <div class="slide">
+                              <img src="img/slider3.jpg" alt="">
+                          </div>
+                          <!-- slide image end -->
+              
+                          <!-- automatic navigation start -->
+                          <div class="auto-navigation">
+                              <div class="auto-btn1"></div>
+                              <div class="auto-btn2"></div>
+                              <div class="auto-btn3"></div>
+                          </div>
+                          <!-- automatic navigation end -->
+              
+                          <!-- manual navigation start -->
+                          <div class="manual-navigation">
+                              <label for="radio1" class="manual-btn"></label>
+                              <label for="radio2" class="manual-btn"></label>
+                              <label for="radio3" class="manual-btn"></label>
+                          </div>
+                          <!-- manual navigation end -->
+                      </div>
+                  </div>
+                </div>
+                <div class="body-item feature_list">
+                    <h2>Our Features</h2>
+                    <ul>
+                        <li>Inventory Monitoring</li>
+                        <li>Emission Reduction</li>
+                        <li>Mitigation Models</li>
+                        <li>Carbon Budgets</li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+    </section>
+    <div class="footer-section flex center">
+      <footer>
+          <span>&copy; Climate Neutral Limited</span>
+      </footer>
+    </div>
+    <script type="module" src="utils.js"></script>
+    <script>
+      var counter =  1;
+
+setInterval(function(){
+    document.getElementById('radio'+counter).checked = true;
+    counter++;
+
+    if(counter > 3){
+        counter = 1;
+    }
+}, 5000);
+    </script>
+  </body>
+</html>
