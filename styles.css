@@ -60,10 +60,10 @@ svg{
   height: 16px;
 }
 
-.home_header{
+/* .home_header{
   display: grid;
   min-height: 100vh;
-}
+} */
 
 .home_header h1{
   font-size: 5rem;
