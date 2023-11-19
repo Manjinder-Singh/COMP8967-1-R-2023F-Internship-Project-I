@@ -25,43 +25,63 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="login.css" />
   </head>
-  <body class="flex center">
-    <div class="page-grid grid">
-      <section class="banner grid center">
-        <img
-          src="https://blogger.googleusercontent.com/img/a/AVvXsEghdXVxxAlp1t_cKedjD8EZ9toGFYAPe_c40Sdogsj12fzOjV65u4rsHBVo7jnViKGu7pFKEncx3FcIh9GAJqz0IXOwuX1HW5hA_9uy58L4bOj-uZUWTysmgi9WMf1FTdD_EmL2xeVFsJhSf3gr8c5tiGX8frQdZtUv1ny-LEui0HDr0RmCCmY0bUaA"
-          alt=""
-        />
-      </section>
-      <section class="form-wrapper grid center">
-        <form id="login-form" action="" class="form-section">
-          <div class="header">
-            <h1>Welcome Back</h1>
-            <p>Welcome back, Please enter your details</p>
-          </div>
-          <div class="field">
-            <label for="">Email</label>
-            <input type="text" id="email" placeholder="Enter Your name" />
-          </div>
-          <div class="field">
-            <label for="">Password</label>
-            <input type="password" id="password" placeholder="Enter Your password" />
-          </div>
-          <div class="pass-section flex">
-            <div class="input-item">
-              <input type="checkbox" name="" id="" />
-              <span>Remember password</span>
+  <body>
+    <header id="main-header">
+      <div class="main-header-logo">
+        <img src="img/BoldLogo.png" alt="">
+      </div>
+      <div class="navbar-links">
+        <nav>
+          <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="carrers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="flex center">
+      <div class="page-grid grid">
+        <section class="banner grid center">
+<!--           <img src="https://blogger.googleusercontent.com/img/a/AVvXsEghdXVxxAlp1t_cKedjD8EZ9toGFYAPe_c40Sdogsj12fzOjV65u4rsHBVo7jnViKGu7pFKEncx3FcIh9GAJqz0IXOwuX1HW5hA_9uy58L4bOj-uZUWTysmgi9WMf1FTdD_EmL2xeVFsJhSf3gr8c5tiGX8frQdZtUv1ny-LEui0HDr0RmCCmY0bUaA" alt=""/> -->
+           <img src="img/BoldLogo.png" alt="">
+        </section>
+        <section class="form-wrapper grid center">
+          <form id="login-form" action="" class="form-section">
+            <div class="header">
+              <h1>Welcome Back</h1>
+              <p>Welcome back, Please enter your details</p>
             </div>
-            <a href="#0">Forgot password?</a>
-          </div>
-          <button type="submit" class="btn btn-primary">Sign in</button>
-          <div class="footer">
-            <p>Dont have an account? <a href="#0">Sign up</a></p>
-          </div>
-        </form>
-      </section>
+            <div class="field">
+              <label for="">Email</label>
+              <input type="text" id="email" placeholder="Enter Your name" />
+            </div>
+            <div class="field">
+              <label for="">Password</label>
+              <input type="password" id="password" placeholder="Enter Your password" />
+            </div>
+            <div class="pass-section flex">
+              <div class="input-item">
+                <input type="checkbox" name="" id="" />
+                <span>Remember password</span>
+              </div>
+              <a href="#0">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+            <div class="footer">
+              <p>Dont have an account? <a href="#0">Sign up</a></p>
+            </div>
+          </form>
+        </section>
+      </div>
     </div>
-
+    <div class="footer-section flex center">
+      <footer>
+        <span>&copy; Climate Neutral Limited</span>
+      </footer>
+    </div>
     <script>
       const loginForm = document.getElementById('login-form');
       const emailInput = document.getElementById('email');
