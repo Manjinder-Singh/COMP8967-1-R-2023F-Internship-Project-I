@@ -5,6 +5,9 @@
     <title>Dynamic Table Mapping</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="dimensionlessscore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
 </head>
 
 <body>
@@ -15,6 +18,33 @@
                 Rational decision making process informed by metrics and balanced with
                 your unique priorities.
             </p>
+            <button class="signout-button" id="signout-button" onclick="signOut()">Sign Out</button>
+            <script src="firebaseconfig.js"></script>
+            <script>
+                // Check if the user is signed in when the tableops page loads
+                firebase.auth().onAuthStateChanged(function (user) {
+                    var userLoggedInFlag = sessionStorage.getItem("userLoggedIn");
+
+                    if (!userLoggedInFlag) {
+                        // console.log("user :"+user);
+                        // User is not signed in, redirect to the login page
+                        window.location.replace('login.html');
+                    }
+                });
+
+                // Add a sign-out functionality
+                function signOut() {
+                    firebase.auth().signOut().then(function () {
+                        // User is signed out, remove the user's login status from localStorage
+                        sessionStorage.removeItem('userLoggedIn');
+                        // Redirect to the login page
+                        window.location.replace('login.html');
+                    }).catch(function (error) {
+                        // Handle sign-out errors
+                        console.error(error.message);
+                    });
+                }
+            </script>
         </div>
     </section>
 
@@ -93,7 +123,9 @@
         <input type="file" id="fileInput" accept=".json" />
         <br /><br />
     </main>
+
     <script>
+
         function openTable3Generator() {
             document.getElementById('table3Modal').style.display = 'block';
             generateTable3();
@@ -580,61 +612,61 @@
         document.querySelector("button[onclick='downloadJSON()']").addEventListener("click", downloadJSON);
 
         // Function to handle file upload and populate tables
-function handleFileUpload(event) {
-    var input = event.target;
-    var file = input.files[0];
+        function handleFileUpload(event) {
+            var input = event.target;
+            var file = input.files[0];
 
-    if (file) {
-        var reader = new FileReader();
-        reader.onload = function () {
-            var jsonData = JSON.parse(reader.result);
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    var jsonData = JSON.parse(reader.result);
 
-            // Populate Table 1
-            var table1 = document.getElementById("table1");
-            while (table1.rows.length > 1) {
-                table1.deleteRow(1);
-            }
-            for (var i = 0; i < jsonData.table1.length; i++) {
-                var newRow = table1.insertRow(-1);
-                newRow.insertCell(0).innerHTML = '<input type="text" value="' + jsonData.table1[i].Case + '">';
-                newRow.insertCell(1).innerHTML = '<input type="text" value="' + jsonData.table1[i].Name + '">';
-                newRow.insertCell(2).innerHTML = '<select><option value="Number">Number</option><option value="Descriptive">Descriptive</option></select>';
-                newRow.insertCell(3).innerHTML = '<input type="number" value="' + jsonData.table1[i].Weight + '">';
-                newRow.insertCell(4).innerHTML = '<input type="text" value="' + jsonData.table1[i]["Direction to optimize"] + '">';
-                newRow.insertCell(5).appendChild(createDeleteButton());
-            }
-
-            // Populate Table 2
-            var table2 = document.getElementById("table2");
-            while (table2.rows.length > 1) {
-                table2.deleteRow(1);
-            }
-            for (var i = 0; i < jsonData.table2.length; i++) {
-                var newRow = table2.insertRow(-1);
-                newRow.insertCell(0).innerHTML = '<input type="text" value="' + jsonData.table2[i].Scenario + '">';
-                newRow.insertCell(1).innerHTML = '<input type="text" value="' + jsonData.table2[i].Name + '">';
-                newRow.insertCell(2).innerHTML = '<button onclick="deleteRowTable2(this)"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"></path></svg></div></button>';
-            }
-
-            // Populate Table 3
-            var table3 = document.getElementById("table3");
-            while (table3.rows.length > 1) {
-                table3.deleteRow(1);
-            }
-            for (var i = 0; i < jsonData.table3.length; i++) {
-                var newRow = table3.insertRow(-1);
-                newRow.insertCell(0).innerHTML = '<input type="text" value="' + jsonData.table3[i].Name + '">';
-                for (var key in jsonData.table3[i]) {
-                    if (!key.includes("Linear Score")) {
-                        newRow.insertCell().innerHTML = '<input type="number" value="' + jsonData.table3[i][key] + '">';
+                    // Populate Table 1
+                    var table1 = document.getElementById("table1");
+                    while (table1.rows.length > 1) {
+                        table1.deleteRow(1);
                     }
-                }
+                    for (var i = 0; i < jsonData.table1.length; i++) {
+                        var newRow = table1.insertRow(-1);
+                        newRow.insertCell(0).innerHTML = '<input type="text" value="' + jsonData.table1[i].Case + '">';
+                        newRow.insertCell(1).innerHTML = '<input type="text" value="' + jsonData.table1[i].Name + '">';
+                        newRow.insertCell(2).innerHTML = '<select><option value="Number">Number</option><option value="Descriptive">Descriptive</option></select>';
+                        newRow.insertCell(3).innerHTML = '<input type="number" value="' + jsonData.table1[i].Weight + '">';
+                        newRow.insertCell(4).innerHTML = '<input type="text" value="' + jsonData.table1[i]["Direction to optimize"] + '">';
+                        newRow.insertCell(5).appendChild(createDeleteButton());
+                    }
+
+                    // Populate Table 2
+                    var table2 = document.getElementById("table2");
+                    while (table2.rows.length > 1) {
+                        table2.deleteRow(1);
+                    }
+                    for (var i = 0; i < jsonData.table2.length; i++) {
+                        var newRow = table2.insertRow(-1);
+                        newRow.insertCell(0).innerHTML = '<input type="text" value="' + jsonData.table2[i].Scenario + '">';
+                        newRow.insertCell(1).innerHTML = '<input type="text" value="' + jsonData.table2[i].Name + '">';
+                        newRow.insertCell(2).innerHTML = '<button onclick="deleteRowTable2(this)"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"></path></svg></div></button>';
+                    }
+
+                    // Populate Table 3
+                    var table3 = document.getElementById("table3");
+                    while (table3.rows.length > 1) {
+                        table3.deleteRow(1);
+                    }
+                    for (var i = 0; i < jsonData.table3.length; i++) {
+                        var newRow = table3.insertRow(-1);
+                        newRow.insertCell(0).innerHTML = '<input type="text" value="' + jsonData.table3[i].Name + '">';
+                        for (var key in jsonData.table3[i]) {
+                            if (!key.includes("Linear Score")) {
+                                newRow.insertCell().innerHTML = '<input type="number" value="' + jsonData.table3[i][key] + '">';
+                            }
+                        }
+                    }
+                };
+                reader.readAsText(file);
             }
-        };
-        reader.readAsText(file);
-    }
-}
-document.getElementById("fileInput").addEventListener("change", handleFileUpload);
+        }
+        document.getElementById("fileInput").addEventListener("change", handleFileUpload);
 
     </script>
 </body>

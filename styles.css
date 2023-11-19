@@ -86,3 +86,16 @@ svg{
   top: 10px;
   right: 10px;
 }
+.signout-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px; /* Adjust the margin as needed for spacing */
+  border: 2px solid rgb(87, 87, 225);
+  color: black; /* Text color */
+  background-color: white; /* Optional: Set the background color to white */
+  padding: 5px 10px; /* Optional: Add some padding to the button */
+  cursor: pointer; /* Optional: Add a pointer cursor on hover */
+  border-radius: 10px; /* Adjust the value to control the roundness of the borders */
+
+}
