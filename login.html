@@ -78,6 +78,8 @@
             const user = userCredential.user;
             console.log(`Logged in as ${user.email}`);
             // You can redirect or perform other actions here.
+            localStorage.setItem('userEmail', email);
+            window.location.href = 'index.html';
           })
           .catch((error) => {
             // Handle login errors
