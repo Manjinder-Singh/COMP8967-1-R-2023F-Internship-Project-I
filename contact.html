@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Climate Neutral</title>
+    <link rel="stylesheet" type="text/css" href="styles1.css">
+    <link rel="stylesheet" href="header.css">
+</head>
+<body>
+    <header id="main-header">
+        <div class="main-header-logo">
+          <img src="img/BoldLogo.png" alt="">
+        </div>
+        <div class="navbar-links">
+          <nav>
+            <ul class="homepage-navbar-lists" id="homepage-navbar-lists">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="carrers.html">Careers</a></li> 
+                <li><a href="contact.html">Contact</a></li>
+                <!-- <li><a href="login.html">Login</a></li> -->
+                <script>
+                    let data = localStorage.getItem('userEmail');
+                    let li = document.createElement('li');
+                    let listItem = document.getElementById('homepage-navbar-lists'); 
+                    if(data !== null){
+                      li.innerHTML = '<a href="index.html">Go To Dashboard</a>'
+                      listItem.appendChild(li);
+                    }else if (data == null){
+                      li.innerHTML = '<a href="login.html">Login</a>'
+                      listItem.appendChild(li);
+                    }
+                </script>
+            </ul>
+          </nav>
+        </div> 
+    </header>
+    <div class="main-body">
+        <div class="contact-form-div">
+            <div class="contact-form-header">
+                <h1>Contact Us</h1>
+            </div>
+            <div class="contact-form-body">
+                <form class="form" id="contact-form">
+                    <div class="form-control">
+                        <label for="">Full Name</label>
+                        <input type="text" placeholder="Name..." id="username">
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
+                    </div>
+                    <div class="form-control">
+                        <label for="">Email</label>
+                        <input type="email" placeholder="Email..." id="email">
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
+                    </div>
+                    <div class="form-control">
+                        <label for="">Message</label>
+                        <textarea name="" id="message" cols="30" rows="5"></textarea>
+                    </div>
+                    <div class="form-control">
+                        <div class="inquiries">
+                            <!-- <p>If you want to send feedback or have any comments, please email us at <span class="highlighted">feedback@climateneutral.com</span>.</p> -->
+                            <button id="sendEmailButton">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+        
+
+        <!-- <div class="container1">
+            <h1>Contact Us</h1>
+            <div class="contact-form">
+                <form id="feedbackForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required>
+    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+    
+                    <label for="message">Message:</label>
+                    <textarea id="message" required></textarea>
+    
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            
+        </div> 
+    
+        <button id="printButton">Print</button>
+        <button id="saveToFileButton">Save to .txt</button>-->
+    </div>
+    <div class="footer-section flex center">
+        <footer>
+            <span>&copy; Climate Neutral Limited</span>
+        </footer>
+      </div>
+    <script src="contact.js"></script>
+</body>
+</html>
