@@ -188,6 +188,8 @@ function calculateAndStoreTotalDimensionlessScores() {
 
      // Check if the HTML element exists before updating its content
      if (resultContainer) {
+      // Clear the div init
+      resultContainer.innerHTML = "";
       // Parse the JSON string to get the object
       var scoreObject = JSON.parse(jsonTotalDimensionlessScorePerScenario);
 
