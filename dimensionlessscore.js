@@ -335,3 +335,183 @@ function toNumeric(inputValue){
 // // Calculate and print the maximum value of total ratings
 // const maxTotalRating = Math.max(totalRatingSituation1, totalRatingSituation2);
 // console.log("Maximum Total Normalized Rating:", maxTotalRating);
+
+
+
+
+
+
+
+// Code added by Bhajji
+// Function to plot bar graph and donut chart
+function plotgraphs() {
+  // Retrieve the total dimensionless scores from local storage
+  var totalDimensionlessScorePerScenario = JSON.parse(localStorage.getItem("totalDimensionlessScorePerScenario"));
+
+  if (totalDimensionlessScorePerScenario) {
+      // Create arrays for plotting
+      var scenarioNames = Object.keys(totalDimensionlessScorePerScenario);
+      var scores = Object.values(totalDimensionlessScorePerScenario);
+
+      // Plot Bar Graph
+      createBarGraph(scenarioNames, scores);
+
+      // Plot Horizontal Bar Graph
+      createHorizontalBarGraph(scenarioNames, scores);
+
+      // Plot Donut Chart
+      createDonutChart(scenarioNames, scores);
+  }
+}
+
+/*
+// Function to create a bar graph and convert it to an image
+function createBarGraph(xValues, yValues) {
+  var data = [{
+      x: xValues,
+      y: yValues,
+      type: 'bar'
+  }];
+
+  // Sort the data based on yValues
+  // data[0].y.sort((a, b) => yValues[xValues.indexOf(b)] - yValues[xValues.indexOf(a)]);
+
+  var layout = {
+      title: 'Total Dimensionless Scores per Scenario',
+      xaxis: {
+          title: 'Scenarios'
+      },
+      yaxis: {
+          title: 'Total Dimensionless Score'
+      }
+  };
+
+  var config = {
+      modeBarButtonsToRemove: ['toggleSpikelines', 'zoomIn2d', 'zoomOut2d', 'sendDataToCloud', 'zoom2d', 'pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'resetScale2d', 'hoverClosestCartesian', 'hoverCompareCartesian'],
+      displaylogo: false
+  };
+
+  Plotly.newPlot('myDiv1', data, layout, config);/*.then(function(gd) {
+    Plotly.toImage(gd, {format: 'png', width: 800, height: 400})
+      .then(function(url) {
+        var img = new Image;
+        img.src = url;
+        document.getElementById('myDiv1').appendChild(img);
+      });
+  });*/
+// }*/
+
+// Function to create a bar graph and convert it to an image
+function createBarGraph(xValues, yValues) {
+  // Combine xValues and yValues into an array of objects for sorting
+  var data = xValues.map((scenario, index) => ({ scenario, value: yValues[index] }));
+
+  // Sort the data array based on values in descending order
+  data.sort((a, b) => b.value - a.value);
+
+  // Extract sorted xValues and yValues from the sorted data array
+  var sortedXValues = data.map(item => item.value);
+  var sortedYValues = data.map(item => item.scenario);
+
+  var sortedData = [{
+    x: sortedXValues,
+    y: sortedYValues,
+    type: 'bar'
+  }];
+
+  var layout = {
+    title: 'Total Dimensionless Scores per Scenario',
+    xaxis: {
+      title: 'Scenarios'
+    },
+    yaxis: {
+      title: 'Total Dimensionless Score'
+    }
+  };
+
+  var config = {
+    modeBarButtonsToRemove: ['toggleSpikelines', 'zoomIn2d', 'zoomOut2d', 'sendDataToCloud', 'zoom2d', 'pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'resetScale2d', 'hoverClosestCartesian', 'hoverCompareCartesian'],
+    displaylogo: false
+  };
+
+  Plotly.newPlot('myDiv1', sortedData, layout, config);
+}
+
+
+
+// Function to create a horizontal bar graph and convert it to an image
+function createHorizontalBarGraph(xValues, yValues) {
+  // Create an array of objects with x and y properties for sorting
+  var data = [{
+    x: yValues,
+    y: xValues,
+    type: 'bar',
+    orientation: 'h'
+  }];
+
+  // Sort the data based on yValues
+  data[0].y.sort((a, b) => yValues[xValues.indexOf(b)] - yValues[xValues.indexOf(a)]);
+
+  var layout = {
+    title: 'Total Dimensionless Scores per Scenario',
+    yaxis: {
+      title: 'Scenarios'
+    },
+    xaxis: {
+      title: 'Total Dimensionless Score'
+    }
+  };
+
+  var config = {
+    modeBarButtonsToRemove: ['toggleSpikelines', 'zoomIn2d', 'zoomOut2d', 'sendDataToCloud', 'zoom2d', 'pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'resetScale2d', 'hoverClosestCartesian', 'hoverCompareCartesian'],
+    displaylogo: false
+  };
+
+  Plotly.newPlot('myDiv1', data, layout, config).then(function (gd) {
+    Plotly.toImage(gd, { format: 'png', width: 800, height: 400 })
+      .then(function (url) {
+        var img = new Image;
+        img.src = url;
+        document.getElementById('myDiv2').appendChild(img);
+      });
+  });
+}
+
+
+// Function to create a donut chart and convert it to an image
+function createDonutChart(labels, values) {
+  // Combine labels and values into an array of objects for sorting
+  var data = labels.map((label, index) => ({ label, value: values[index] }));
+
+  // Sort the data array based on values in descending order
+  data.sort((a, b) => b.value - a.value);
+
+  // Extract sorted labels and values from the sorted data array
+  var sortedLabels = data.map(item => item.label);
+  var sortedValues = data.map(item => item.value);
+
+  var trace = {
+    labels: sortedLabels,
+    values: sortedValues,
+    type: 'pie',
+    hole: 0.4,  // Set hole size to create a donut chart
+  };
+
+  var sortedLayout = {
+    title: 'Total Dimensionless Scores Distribution',
+  };
+
+  var config = {
+    modeBarButtonsToRemove: ['hoverClosestPie', 'toggleHover', 'toggleSpikelines', 'zoomIn2d', 'zoomOut2d', 'sendDataToCloud', 'zoom2d', 'pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'resetScale2d', 'hoverClosestCartesian', 'hoverCompareCartesian'],
+    displaylogo: false
+  };
+
+  Plotly.newPlot('myDiv2', [trace], sortedLayout, config).then(function (gd) {
+    Plotly.toImage(gd, { format: 'png', width: 800, height: 400 })
+      .then(function (url) {
+        var img = new Image;
+        img.src = url;
+        document.getElementById('myDiv3').appendChild(img);
+      });
+  });
+}
