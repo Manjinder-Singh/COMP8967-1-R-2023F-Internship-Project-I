@@ -5,6 +5,31 @@ var colors = [
     'rgb(214, 39, 40)', 'rgb(148, 103, 189)'
 ];
 
+
+// Load data from JSON file
+fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+        // Find the category with the highest value
+        var highestValueCategory = data.data.reduce((prev, current) => (prev.value > current.value) ? prev : current);
+
+        // Display Recommended Category box
+        var recommendedCategoryContent = `Based on Above Dimensionless scores, the Recommended Category is : ${highestValueCategory.category} and value is : (${highestValueCategory.value})`;
+        document.getElementById('recommended-category-content').innerHTML = recommendedCategoryContent;
+
+        
+        // Call createLineChart instead of createBarGraph
+        // createLineChart(data.data);
+        // Create and display Bar chart 
+        createBarGraph(data.data);
+        // Create and display Horizontal Bar chart
+        createHorizontalBarGraph(data.data);
+        // Create and display donut chart
+        createDonutChart(data.data);
+    })
+    .catch(error => console.error('Error loading data:', error));
+
+
 // Function to create a bar graph with consistent category colors
 function createBarGraph(barData) {
     // Sort the data by value in ascending order
@@ -38,7 +63,12 @@ function createBarGraph(barData) {
         }
     };
 
-    Plotly.newPlot('myDiv1', data, layout);
+    var config = {
+        modeBarButtonsToRemove: ['toggleSpikelines', 'zoomIn2d', 'zoomOut2d', 'sendDataToCloud', 'zoom2d', 'pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'resetScale2d', 'hoverClosestCartesian', 'hoverCompareCartesian'],
+        displaylogo: false
+     };
+
+    Plotly.newPlot('myDiv1', data, layout, config);
 }
 
 // Function to create a horizontal bar graph with consistent category colors
@@ -75,16 +105,60 @@ function createHorizontalBarGraph(horizontalBarData) {
         }
     };
 
-    Plotly.newPlot('myDiv2', data, layout);
+    var config = {
+        modeBarButtonsToRemove: ['toggleSpikelines', 'zoomIn2d', 'zoomOut2d', 'sendDataToCloud', 'zoom2d', 'pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'resetScale2d', 'hoverClosestCartesian', 'hoverCompareCartesian'],
+        displaylogo: false
+     };
+
+    Plotly.newPlot('myDiv2', data, layout, config);
 }
 
-// Function to create an area chart with consistent category colors
-function createAreaChart(areaChartData) {
+// Function to create a donut chart with consistent category colors
+function createDonutChart(donutChartData) {
     // Sort the data by value in descending order
-    areaChartData.sort((a, b) => b.value - a.value);
+    donutChartData.sort((a, b) => b.value - a.value);
 
-    var xValues = areaChartData.map(item => item.category);
-    var yValues = areaChartData.map(item => item.value);
+    var labels = donutChartData.map(item => item.category);
+    var values = donutChartData.map(item => item.value);
+
+    // Assign colors to categories consistently
+    var categoryColorsForPlot = labels.map(category => categoryColors[category] || colors.pop());
+    categoryColorsForPlot.forEach((color, index) => {
+        categoryColors[labels[index]] = color;
+    });
+
+    var trace = {
+        labels: labels,
+        values: values,
+        type: 'pie',
+        hole: 0.4,  // Set hole size to create a donut chart
+        marker: {
+            colors: categoryColorsForPlot
+        }
+    };
+
+    var data = [trace];
+
+    var layout = {
+        title: 'Donut Chart (Sorted)'
+    };
+
+    var config = {
+        modeBarButtonsToRemove: ['hoverClosestPie', 'toggleHover', 'toggleSpikelines', 'zoomIn2d', 'zoomOut2d', 'sendDataToCloud', 'zoom2d', 'pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'resetScale2d', 'hoverClosestCartesian', 'hoverCompareCartesian'],
+        displaylogo: false
+     };    
+
+    Plotly.newPlot('myDiv3', data, layout, config);
+    
+}
+
+// Function to create a line chart with consistent category colors
+function createLineChart(lineChartData) {
+    // Sort the data by value in descending order
+    lineChartData.sort((a, b) => b.value - a.value);
+
+    var xValues = lineChartData.map(item => item.category);
+    var yValues = lineChartData.map(item => item.value);
 
     // Assign colors to categories consistently
     var categoryColorsForPlot = xValues.map(category => categoryColors[category] || colors.pop());
@@ -92,20 +166,17 @@ function createAreaChart(areaChartData) {
         categoryColors[xValues[index]] = color;
     });
 
-    var trace = {
+    var data = [{
         x: xValues,
         y: yValues,
-        type: 'scatter',
-        fill: 'tozeroy',
+        type: 'line',
         marker: {
             color: categoryColorsForPlot
         }
-    };
-
-    var data = [trace];
+    }];
 
     var layout = {
-        title: 'Area Chart (Sorted)',
+        title: 'Line Chart (Sorted)',
         xaxis: {
             title: 'Categories'
         },
@@ -114,15 +185,10 @@ function createAreaChart(areaChartData) {
         }
     };
 
-    Plotly.newPlot('myDiv3', data, layout);
-}
+    var config = {
+        modeBarButtonsToRemove: ['toggleSpikelines', 'zoomIn2d', 'zoomOut2d', 'sendDataToCloud', 'zoom2d', 'pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'resetScale2d', 'hoverClosestCartesian', 'hoverCompareCartesian'],
+        displaylogo: false
+    };
 
-// Load data from JSON file
-fetch('data.json')
-    .then(response => response.json())
-    .then(data => {
-        createBarGraph(data.data);
-        createHorizontalBarGraph(data.data);
-        createAreaChart(data.data);
-    })
-    .catch(error => console.error('Error loading data:', error));
+    Plotly.newPlot('myDiv4', data, layout, config);
+}

@@ -31,6 +31,27 @@
             background-color: #fff;
             box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
         }
+        /* Recommended Category Box Styles */
+        #recommended-category-box {
+            width: 75%;
+            margin: 10px auto;
+            padding: 20px;
+            background-color: #05992a;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        #recommended-category-content {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        #recommended-category-content {
+            margin: 0;
+            font-size: 16px;
+            color: #ffffff; /* White text color for better contrast */
+        }
     </style>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <title>Multi-Objective Decision-Making (MODM)</title>
@@ -42,6 +63,11 @@
         through interactive graphs and charts. Explore our data visualizations to gain valuable
         information on different aspects of data.
     </p>
+
+    <!-- Recommended Category Box -->
+    <div id="recommended-category-box">
+        <p id="recommended-category-content"></p>
+    </div>
     
     <div id="charts-container">
         <div id="myDiv1" class="chart"></div>

@@ -1,12 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     background-color: #f0f8ff; /* Light blue background color */
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
 }
 
 .container {
@@ -16,6 +18,14 @@ body {
     width: 70%;
     text-align: left;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.main-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 45px 0;
 }
 
 h1 {
