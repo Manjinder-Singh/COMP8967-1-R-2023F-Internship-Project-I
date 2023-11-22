@@ -50,9 +50,9 @@
           Rational decision making process informed by metrics and balanced with
           your unique priorities.
         </p>
-        <button class="signout-button" id="signout-button" onclick="signOut()">
+<!--         <button class="signout-button" id="signout-button" onclick="signOut()">
           Sign Out
-        </button>
+        </button> -->
         <script src="firebaseconfig.js"></script>
         <script>
           // Check if the user is signed in when the tableops page loads
@@ -179,7 +179,10 @@
       </div>
       <div id="resultContainer"></div>
       <button class="btn" onclick="downloadJSON()">Download JSON</button>
-      <input type="file" id="fileInput" accept=".json" />
+      <label class="file">
+        <input type="file" id="fileInput" accept=".json" />
+        <span class="file-custom"></span>
+      </label>
       <br /><br />
     </main>
   <div class="footer-section flex center">
@@ -187,7 +190,6 @@
           <span>&copy; Climate Neutral Limited</span>
       </footer>
     </div>
-    <script>
     <script>
       function openTable3Generator() {
         document.getElementById("table3Modal").style.display = "block";
