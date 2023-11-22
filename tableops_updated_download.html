@@ -181,8 +181,21 @@
       <button class="btn" onclick="downloadJSON()">Download JSON</button>
       <label class="file">
         <input type="file" id="fileInput" accept=".json" />
-        <span class="file-custom"></span>
+        <span class="file-custom" id="custom-file-input">Choose File..</span>
       </label>
+      <script>
+
+          let inputFile = document.getElementById('fileInput');
+          let outputFile = document.getElementById('custom-file-input');
+
+          inputFile.addEventListener("input", ()=>{
+            if(inputFile.files.length){
+              let output = inputFile.files[0].name;
+              outputFile.innerHTML = output;
+            }
+          });
+
+      </script>
       <br /><br />
     </main>
   <div class="footer-section flex center">
