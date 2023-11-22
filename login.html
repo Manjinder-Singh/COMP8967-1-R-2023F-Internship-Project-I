@@ -12,14 +12,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login Page</title>
   <link rel="stylesheet" href="login.css" />
+  <link rel="stylesheet" href="header.css">
 </head>
 
-<body class="flex center">
+<body>
+  <header id="main-header">
+    <div class="main-header-logo">
+      <img src="img/BoldLogo.png" alt="">
+    </div>
+    <div class="navbar-links">
+      <nav>
+        <ul>
+          <li><a href="homepage.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="carrers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="flex center">
   <div class="page-grid grid">
     <section class="banner grid center">
-      <img
+<!--       <img
         src="https://blogger.googleusercontent.com/img/a/AVvXsEghdXVxxAlp1t_cKedjD8EZ9toGFYAPe_c40Sdogsj12fzOjV65u4rsHBVo7jnViKGu7pFKEncx3FcIh9GAJqz0IXOwuX1HW5hA_9uy58L4bOj-uZUWTysmgi9WMf1FTdD_EmL2xeVFsJhSf3gr8c5tiGX8frQdZtUv1ny-LEui0HDr0RmCCmY0bUaA"
-        alt="" />
+        alt="" /> -->
+      <img src="img/BoldLogo.png" alt="">
     </section>
     <section class="form-wrapper grid center">
       <form id="login-form" action="" class="form-section">
@@ -60,7 +79,7 @@
       </div>
     </section>
   </div>
-
+  </div>
   <script>
     const loginForm = document.getElementById('login-form');
     const emailInput = document.getElementById('email');
