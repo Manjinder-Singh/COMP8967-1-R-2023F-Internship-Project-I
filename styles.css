@@ -11,7 +11,8 @@ table {
   background-color: white;
   overflow: hidden;
   /* width: 500px; */
-  border-radius: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 0px 4px rgba(2, 2, 2, 0.2);
 }
 
 th,
@@ -22,7 +23,7 @@ td {
 }
 
 th {
-  background-color: #7691ab;
+  background-color: #362F4B;
   color: white;
 }
 
