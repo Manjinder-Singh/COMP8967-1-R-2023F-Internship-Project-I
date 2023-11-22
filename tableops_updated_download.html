@@ -3,6 +3,7 @@
   <head>
     <title>Dynamic Table Mapping</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="header.css">
     <script src="dimensionlessscore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
@@ -10,6 +11,38 @@
   </head>
 
   <body>
+        <header id="main-header">
+      <div class="main-header-logo">
+        <img src="img/BoldLogo.png" alt="">
+      </div>
+      <div class="navbar-links">
+        <nav>
+          <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="carrers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="navbar-links">
+        <ul id="loginList">
+          <script>
+            if(localStorage.getItem('userEmail') !== null){
+              let data = localStorage.getItem('userEmail');
+              let li = document.createElement('li');
+              var listItem = document.getElementById('loginList'); 
+              li.innerText="Welcome "+data;
+              listItem.appendChild(li);
+            }
+          </script>
+          <li>
+            <!-- <a href="login.html">Logout</a> -->
+            <button class="logoutButton" onClick="signOut()">Logout</button>
+          </li>
+        </ul>
+      </div>
+    </header>
     <section class="home_header">
       <div>
         <h1>Multi-Objective Decision Making Application</h1>
@@ -41,6 +74,7 @@
               .then(function () {
                 // User is signed out, remove the user's login status from localStorage
                 sessionStorage.removeItem("userLoggedIn");
+                localStorage.removeItem('userEmail');
                 // Redirect to the login page
                 window.location.replace("homepage.html");
               })
@@ -60,7 +94,7 @@
           <th>Name</th>
           <th>Scoring type</th>
           <th>Weight</th>
-          <th>Direction to optimize</th>
+          <th colspan="2">Direction to optimize</th>
         </tr>
       </table>
 
@@ -71,7 +105,7 @@
       <table id="table2">
         <tr>
           <th>Scenario</th>
-          <th>Name</th>
+          <th colspan="2">Name</th>
         </tr>
 
         <!-- Example row for Category 1 -->
@@ -148,7 +182,12 @@
       <input type="file" id="fileInput" accept=".json" />
       <br /><br />
     </main>
-
+  <div class="footer-section flex center">
+      <footer>
+          <span>&copy; Climate Neutral Limited</span>
+      </footer>
+    </div>
+    <script>
     <script>
       function openTable3Generator() {
         document.getElementById("table3Modal").style.display = "block";
