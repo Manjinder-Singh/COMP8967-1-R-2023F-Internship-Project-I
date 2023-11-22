@@ -6,14 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signup Page</title>
     <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="header.css">
     <script src="main.js"></script>
 </head>
 
-<body class="flex center">
-    <div class="page-grid grid">
-        <section class="banner grid center">
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEghdXVxxAlp1t_cKedjD8EZ9toGFYAPe_c40Sdogsj12fzOjV65u4rsHBVo7jnViKGu7pFKEncx3FcIh9GAJqz0IXOwuX1HW5hA_9uy58L4bOj-uZUWTysmgi9WMf1FTdD_EmL2xeVFsJhSf3gr8c5tiGX8frQdZtUv1ny-LEui0HDr0RmCCmY0bUaA"
-                alt="" />
+<body>
+    <header id="main-header">
+        <div class="main-header-logo">
+          <img src="img/BoldLogo.png" alt="">
+        </div>
+        <div class="navbar-links">
+          <nav>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="carrers.html">Careers</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="login.html">Login</a></li>
+            </ul>
+          </nav>
+        </div>
+    </header>
+    <div class="flex center">
+        <div class="page-grid grid">
+            <section class="banner grid center">
+<!--             <img src="https://blogger.googleusercontent.com/img/a/AVvXsEghdXVxxAlp1t_cKedjD8EZ9toGFYAPe_c40Sdogsj12fzOjV65u4rsHBVo7jnViKGu7pFKEncx3FcIh9GAJqz0IXOwuX1HW5hA_9uy58L4bOj-uZUWTysmgi9WMf1FTdD_EmL2xeVFsJhSf3gr8c5tiGX8frQdZtUv1ny-LEui0HDr0RmCCmY0bUaA"
+                alt="" /> -->
+                <img src="img/BoldLogo.png" alt="">
         </section>
         <section class="form-wrapper grid center">
             <form id="signup-form" action="" class="form-section">
@@ -46,6 +64,7 @@
                 </div>
             </form>
         </section>
+    </div>
     </div>
     <!-- Firebase configuration script -->
     <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
