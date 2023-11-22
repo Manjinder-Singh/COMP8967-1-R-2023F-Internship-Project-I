@@ -132,8 +132,20 @@
     <script type="module" src="utils.js"></script>
     <script>
       function logout(){
-        localStorage.removeItem('userEmail');
-        window.location.replace('homepage.html');
+        firebase
+              .auth()
+              .signOut()
+              .then(function () {
+                // User is signed out, remove the user's login status from localStorage
+                sessionStorage.removeItem("userLoggedIn");
+                localStorage.removeItem('userEmail');
+                // Redirect to the login page
+                window.location.replace("homepage.html");
+              })
+              .catch(function (error) {
+                // Handle sign-out errors
+                console.error(error.message);
+              });
       }
     </script>
   </body>
