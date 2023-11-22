@@ -135,6 +135,9 @@
           // User is signed in.
           const user = userCredential.user;
           console.log(`Logged in as ${user.email}`);
+
+          localStorage.setItem('userEmail', email);
+          
           // You can redirect or perform other actions here.
           sessionStorage.setItem('userLoggedIn', 'true');
           window.location.replace("tableops_updated_download.html");
