@@ -350,6 +350,8 @@ function toNumeric(inputValue){
 // Code added by Bhajji
 // Function to plot bar graph and donut chart
 function plotgraphs() {
+  document.getElementById('flexContainer').style.display = 'flex';
+
   // Retrieve the total dimensionless scores from local storage
   var totalDimensionlessScorePerScenario = JSON.parse(localStorage.getItem("totalDimensionlessScorePerScenario"));
 
@@ -359,7 +361,8 @@ function plotgraphs() {
       var scores = Object.values(totalDimensionlessScorePerScenario);
 
       // Plot Bar Graph
-      createBarGraph(scenarioNames, scores);
+      // createBarGraph(scenarioNames, scores);
+      createInteractiveTable(scenarioNames,scores);
 
       // Plot Horizontal Bar Graph
       createHorizontalBarGraph(scenarioNames, scores);
@@ -406,80 +409,125 @@ function createBarGraph(xValues, yValues) {
   });*/
 // }*/
 
-// Function to create a bar graph and convert it to an image
-function createBarGraph(xValues, yValues) {
-  // Combine xValues and yValues into an array of objects for sorting
-  var data = xValues.map((scenario, index) => ({ scenario, value: yValues[index] }));
+function createInteractiveTable(xValues, yValues) {
+  var data = xValues.map((scenario, index) => [scenario, yValues[index]]);
 
-  // Sort the data array based on values in descending order
-  data.sort((a, b) => b.value - a.value);
+  // Empty the table body to remove any existing data
+  $('#myTable tbody').empty();
 
-  // Extract sorted xValues and yValues from the sorted data array
-  var sortedXValues = data.map(item => item.value);
-  var sortedYValues = data.map(item => item.scenario);
+  // Populate the table with new data
+  data.forEach(item => {
+      $('#myTable tbody').append(`<tr><td>${item[0]}</td><td>${item[1]}</td></tr>`);
+  });
 
-  var sortedData = [{
-    x: sortedXValues,
-    y: sortedYValues,
-    type: 'bar'
-  }];
-
-  var layout = {
-    title: 'Total Dimensionless Scores per Scenario',
-    xaxis: {
-      title: 'Scenarios'
-    },
-    yaxis: {
-      title: 'Total Dimensionless Score'
-    }
-  };
-
-  var config = {
-    modeBarButtonsToRemove: ['toggleSpikelines', 'zoomIn2d', 'zoomOut2d', 'sendDataToCloud', 'zoom2d', 'pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'resetScale2d', 'hoverClosestCartesian', 'hoverCompareCartesian'],
-    displaylogo: false
-  };
-
-  Plotly.newPlot('myDiv1', sortedData, layout, config);
+  // Initialize DataTables on the table
+  $('#myTable').DataTable();
 }
 
+// Function to create a bar graph and convert it to an image
+// function createBarGraph(xValues, yValues) {
+//   // Combine xValues and yValues into an array of objects for sorting
+//   var data = xValues.map((scenario, index) => ({ scenario, value: yValues[index] }));
+
+//   // Sort the data array based on values in descending order
+//   data.sort((a, b) => b.value - a.value);
+
+//   // Extract sorted xValues and yValues from the sorted data array
+//   var sortedXValues = data.map(item => item.value);
+//   var sortedYValues = data.map(item => item.scenario);
+
+//   var sortedData = [{
+//     x: sortedXValues,
+//     y: sortedYValues,
+//     type: 'bar'
+//   }];
+
+//   var layout = {
+//     title: 'Total Dimensionless Scores per Scenario',
+//     xaxis: {
+//       title: 'Scenarios'
+//     },
+//     yaxis: {
+//       title: 'Total Dimensionless Score'
+//     }
+//   };
+
+//   var config = {
+//     modeBarButtonsToRemove: ['toggleSpikelines', 'zoomIn2d', 'zoomOut2d', 'sendDataToCloud', 'zoom2d', 'pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'resetScale2d', 'hoverClosestCartesian', 'hoverCompareCartesian'],
+//     displaylogo: false
+//   };
+
+//   Plotly.newPlot('myDiv1', sortedData, layout, config);
+// }
 
 
-// Function to create a horizontal bar graph and convert it to an image
 function createHorizontalBarGraph(xValues, yValues) {
-  // Create an array of objects with x and y properties for sorting
+  // Combine xValues and yValues into an array of objects for sorting
+  var combinedData = xValues.map((x, i) => ({ x, y: yValues[i] }));
+
+  // Sort the combined data based on yValues in descending order
+  combinedData.sort((a, b) => b.y - a.y);
+
+  // Extract sorted xValues and yValues from the sorted combined data
+  var sortedXValues = combinedData.map(item => item.x);
+  var sortedYValues = combinedData.map(item => item.y);
+
+  // Create the data array for the plot
   var data = [{
-    x: yValues,
-    y: xValues,
+    x: sortedYValues,
+    y: sortedXValues,
     type: 'bar',
-    orientation: 'h'
+    orientation: 'h',
+    marker: {
+      color: xValues.map((_, i) => `hsl(${i * 360 / xValues.length}, 100%, 70%)`), // Assign a unique color to each bar    
+    }
   }];
 
-  // Sort the data based on yValues
-  data[0].y.sort((a, b) => yValues[xValues.indexOf(b)] - yValues[xValues.indexOf(a)]);
-
+  // Layout configuration
   var layout = {
     title: 'Total Dimensionless Scores per Scenario',
     yaxis: {
-      title: 'Scenarios'
+      title: 'Scenarios',
+      automargin: true,
+      showticklabels:false,
+      tickfont: {
+        size: 12
+      }
     },
     xaxis: {
-      title: 'Total Dimensionless Score'
-    }
+      title: 'Total Dimensionless Score',
+      tickfont: {
+        size: 12
+      }
+    },
+    margin: {
+      l: 60, r: 30, b: 50, t: 50, pad: 4
+    },
+    // paper_bgcolor: '#E5ECF6',
+    // plot_bgcolor: '#E5ECF6',
+    hovermode: 'closest'    
   };
 
+  // Configuration settings for Plotly
   var config = {
     modeBarButtonsToRemove: ['toggleSpikelines', 'zoomIn2d', 'zoomOut2d', 'sendDataToCloud', 'zoom2d', 'pan2d', 'select2d', 'lasso2d', 'autoScale2d', 'resetScale2d', 'hoverClosestCartesian', 'hoverCompareCartesian'],
-    displaylogo: false
+    displaylogo: false,
+    responsive: true
   };
 
+  // Create the plot
   Plotly.newPlot('myDiv2', data, layout, config);
 }
 
 
+
 // Function to create a donut chart and convert it to an image
 function createDonutChart(labels, values) {
-  // Combine labels and values into an array of objects for sorting
-  var data = labels.map((label, index) => ({ label, value: values[index] }));
+  // Convert values to absolute values
+  var absoluteValues = values.map(value => Math.abs(value));
+
+  // Combine labels and absolute values into an array of objects for sorting
+  var data = labels.map((label, index) => ({ label, value: absoluteValues[index] }));
 
   // Sort the data array based on values in descending order
   data.sort((a, b) => b.value - a.value);
@@ -487,6 +535,7 @@ function createDonutChart(labels, values) {
   // Extract sorted labels and values from the sorted data array
   var sortedLabels = data.map(item => item.label);
   var sortedValues = data.map(item => item.value);
+  console.log("Donut values"+sortedLabels+" "+sortedValues);
 
   var trace = {
     labels: sortedLabels,
@@ -495,6 +544,7 @@ function createDonutChart(labels, values) {
     hole: 0.4,  // Set hole size to create a donut chart
   };
 
+  
   var sortedLayout = {
     title: 'Total Dimensionless Scores Distribution',
   };

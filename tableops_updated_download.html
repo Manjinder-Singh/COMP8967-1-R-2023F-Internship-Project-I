@@ -9,6 +9,16 @@
     <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+
   </head>
 
   <body>
@@ -181,9 +191,24 @@
       <div id="resultContainer"></div>
       <br/>
 
-      <div id="myDiv1"></div>
-      <div id="myDiv2"></div>
-      <div id="myDiv3"></div>
+      <div id="flexContainer" style="display: none;">
+        <div id="myDiv1" >
+          <table id="myTable" class="display">
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Total Dimensionless Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data rows will be added here -->
+            </tbody>
+        </table>
+        </div>
+        <div id="myDiv3"></div>
+    </div>
+    <div id="myDiv2"></div>
+      
       
       <button class="btn" onclick="downloadJSON()">Download JSON</button>
       <label class="file">

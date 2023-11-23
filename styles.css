@@ -460,3 +460,20 @@ span.file-custom:before{
 .main-svg{
   height: 100%;
 }
+
+#flexContainer {
+  display: flex;
+}
+
+#myDiv1, #myDiv3 {
+  flex: 1; /* This makes both divs take equal space */
+}
+
+#myDiv3,#myDiv1 {
+  flex:1;
+  height: 400px; /* Or any other height */
+  width: 100%; /* Assuming you want to maintain the width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
