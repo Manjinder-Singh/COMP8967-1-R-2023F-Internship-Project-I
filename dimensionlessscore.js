@@ -80,6 +80,7 @@ function calculateTable3() {
   plotgraphs();
 }
 
+
 // function extractAndStoreData() {
 //   var table1 = document.getElementById("table1");
 //   var data = [];
@@ -471,14 +472,7 @@ function createHorizontalBarGraph(xValues, yValues) {
     displaylogo: false
   };
 
-  Plotly.newPlot('myDiv2', data, layout, config).then(function (gd) {
-    Plotly.toImage(gd, { format: 'png', width: 800, height: 400 })
-      .then(function (url) {
-        var img = new Image;
-        img.src = url;
-        document.getElementById('myDiv2').appendChild(img);
-      });
-  });
+  Plotly.newPlot('myDiv2', data, layout, config);
 }
 
 
@@ -510,12 +504,5 @@ function createDonutChart(labels, values) {
     displaylogo: false
   };
 
-  Plotly.newPlot('myDiv3', [trace], sortedLayout, config).then(function (gd) {
-    Plotly.toImage(gd, { format: 'png', width: 800, height: 400 })
-      .then(function (url) {
-        var img = new Image;
-        img.src = url;
-        document.getElementById('myDiv3').appendChild(img);
-      });
-  });
+  Plotly.newPlot('myDiv3', [trace], sortedLayout, config);
 }

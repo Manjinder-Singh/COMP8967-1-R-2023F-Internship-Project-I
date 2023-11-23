@@ -455,3 +455,8 @@ span.file-custom:before{
 /* span.file-custom:after {
   content: "Choose file...";
 } */
+
+
+.main-svg{
+  height: 100%;
+}
